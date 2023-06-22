@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Syncfusion.Blazor.Calendars" Version="21.2.4" />
+    <PackageReference Include="Syncfusion.Blazor.Charts" Version="21.2.4" />
+    <PackageReference Include="Syncfusion.Blazor.CircularGauge" Version="21.2.4" />
+    <PackageReference Include="Syncfusion.Blazor.Core" Version="21.2.4" />
+    <PackageReference Include="Syncfusion.Blazor.Grid" Version="21.2.4" />
+    <PackageReference Include="Syncfusion.Blazor.LinearGauge" Version="21.2.4" />
+    <PackageReference Include="Syncfusion.Blazor.Navigations" Version="21.2.4" />
+    <PackageReference Include="Syncfusion.Blazor.Themes" Version="21.2.4" />
+  </ItemGroup>
+
+</Project>

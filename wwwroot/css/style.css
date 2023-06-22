@@ -1,0 +1,2622 @@
+@font-face {
+  font-family: 'icomoon';
+  src: url('assets/fonts/icomoon.eot?hvguwa');
+  src: url('assets/fonts/icomoon.eot?hvguwa#iefix') format('embedded-opentype'),
+    url('assets/fonts/icomoon.ttf?hvguwa') format('truetype'),
+    url('assets/fonts/icomoon.woff?hvguwa') format('woff'),
+    url('assets/fonts/icomoon.svg?hvguwa#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"],
+[class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-arrow-down:before {
+  content: "\e900";
+}
+
+.icon-arrow-left:before {
+  content: "\e901";
+}
+
+.icon-arrow-left-circle:before {
+  content: "\e902";
+}
+
+.icon-arrow-right:before {
+  content: "\e903";
+}
+
+.icon-arrow-right-circle:before {
+  content: "\e904";
+}
+
+.icon-arrow-up:before {
+  content: "\e905";
+}
+
+.icon-calendar1:before {
+  content: "\e906";
+}
+
+.icon-check:before {
+  content: "\e907";
+}
+
+.icon-chevron-down:before {
+  content: "\e908";
+}
+
+.icon-chevron-left:before {
+  content: "\e909";
+}
+
+.icon-chevron-right:before {
+  content: "\e90a";
+}
+
+.icon-chevron-up:before {
+  content: "\e90b";
+}
+
+.icon-chevrons-left:before {
+  content: "\e90c";
+}
+
+.icon-chevrons-right:before {
+  content: "\e90d";
+}
+
+.icon-droplet:before {
+  content: "\e90e";
+}
+
+.icon-edit-2:before {
+  content: "\e90f";
+}
+
+.icon-heart:before {
+  content: "\e910";
+}
+
+.icon-home:before {
+  content: "\e911";
+}
+
+.icon-log-in:before {
+  content: "\e912";
+}
+
+.icon-log-out:before {
+  content: "\e913";
+}
+
+.icon-minus:before {
+  content: "\e914";
+}
+
+.icon-minus-circle:before {
+  content: "\e915";
+}
+
+.icon-minus-square:before {
+  content: "\e916";
+}
+
+.icon-plus:before {
+  content: "\e917";
+}
+
+.icon-plus-circle:before {
+  content: "\e918";
+}
+
+.icon-plus-square:before {
+  content: "\e919";
+}
+
+.icon-settings:before {
+  content: "\e91a";
+}
+
+.icon-trash:before {
+  content: "\e91b";
+}
+
+.icon-user:before {
+  content: "\e91c";
+}
+
+.icon-zoom-in:before {
+  content: "\e91d";
+}
+
+.icon-zoom-out:before {
+  content: "\e91e";
+}
+
+.icon-Activities:before {
+  content: "\e91f";
+}
+
+.icon-Breakfast:before {
+  content: "\e920";
+}
+
+.icon-calendar:before {
+  content: "\e921";
+}
+
+.icon-Calories:before {
+  content: "\e922";
+}
+
+.icon-Diet:before {
+  content: "\e923";
+}
+
+.icon-Dinner:before {
+  content: "\e924";
+}
+
+.icon-Fasting:before {
+  content: "\e925";
+}
+
+.icon-Heart:before {
+  content: "\e926";
+}
+
+.icon-Logo:before {
+  content: "\e927";
+}
+
+.icon-Lunch:before {
+  content: "\e928";
+}
+
+.icon-Profile:before {
+  content: "\e929";
+}
+
+.icon-Sleep:before {
+  content: "\e92a";
+}
+
+.icon-Snack-1:before {
+  content: "\e92b";
+}
+
+.icon-Snack-2:before {
+  content: "\e92c";
+}
+
+.icon-Steps:before {
+  content: "\e92d";
+}
+
+.icon-Thunder:before {
+  content: "\e92e";
+}
+
+.icon-Water:before {
+  content: "\e92f";
+}
+
+body {
+  overflow: hidden;
+  margin: 0;
+}
+
+@media only screen and (min-width: 825px) {
+
+  /*! Firefox */
+  .e-dashboardlayout-container,
+  .e-meals-card-container {
+    scrollbar-color: rgba(0, 0, 0, .5) none rgba(0, 0, 0, .5) none;
+  }
+
+  /*! Other Browser */
+  .e-dashboardlayout-container::-webkit-scrollbar,
+  .e-meals-card-container::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+    width: 6px;
+    border: none;
+  }
+
+  .e-dashboardlayout-container,
+  .e-meals-card-container {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0, 0, 0, .5);
+  }
+
+  .e-dashboardlayout-container::-webkit-scrollbar-thumb,
+  .e-meals-card-container::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, .5);
+    border-radius: 6px;
+  }
+
+  .e-input-group-icon,
+  .e-input-group,
+  .e-input-group.e-input-focus.e-icon-admin {
+    border: 0px !important;
+    border-radius: 8px !important;
+    box-shadow: none !important;
+    background: #F2F5F8 !important;
+  }
+
+  /*! Firefox */
+  body.e-dark .e-dashboardlayout-container,
+  body.e-dark .e-meals-card-container {
+    scrollbar-color: rgba(255, 255, 255, .5) none rgba(255, 255, 255, .5) none;
+  }
+
+  body.e-dark .e-dashboardlayout-container,
+  body.e-dark .e-meals-card-container {
+    scrollbar-color: rgba(255, 255, 255, .5);
+  }
+
+  body.e-dark .e-dashboardlayout-container::-webkit-scrollbar-thumb,
+  body.e-dark .e-meals-card-container::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, .5);
+  }
+}
+
+#gradient-chart stop[offset="0"] {
+  stop-color: #8983F1;
+  stop-opacity: 0.5;
+}
+
+#gradient-chart stop[offset="1"] {
+  stop-color: #EE4769;
+  stop-opacity: 0;
+}
+
+#gradient-activity-chart stop[offset="0"] {
+  stop-color: #F547A8;
+  stop-opacity: 0.35;
+}
+
+#gradient-activity-chart stop[offset="1"] {
+  stop-color: #C4C4C4;
+  stop-opacity: 0;
+}
+
+#gradient-diet-chart stop[offset="0"] {
+  stop-color: #2084FE;
+  stop-opacity: 0.2;
+}
+
+#gradient-diet-chart stop[offset="1"] {
+  stop-color: #3247CF;
+  stop-opacity: 0;
+}
+
+.e-dashboardlayout-container {
+  overflow-x: hidden;
+  overflow-y: auto;
+  height: calc(100vh - 75px) !important;
+}
+
+.e-fasting-gauge-container {
+  margin-top: 40px;
+}
+
+.e-water-panel-container,
+.e-fasting-panel-container,
+.e-dashboard-content,
+.e-control-wrapper.e-slider-container.e-vertical,
+.e-activity-chart-header-text,
+.e-meals-panel .e-panel-header,
+.e-dashboard-profile {
+  padding: 0 !important;
+}
+
+.e-fasting-panel,
+.e-water-panel,
+.e-fasting-chart-panel {
+  padding: 24px;
+}
+
+.e-tab-header-icon-div {
+  float: left !important;
+  margin-top: 15px;
+}
+
+.e-tab.tab-container .e-toolbar-items {
+    display: inline-block;
+}
+
+.e-profile-edit-icon-container {
+  display: flex;
+  margin-top: 5px;
+}
+
+.e-modify-container.e-hidden {
+  visibility: hidden;
+}
+
+.e-weight-modify-btn-group.e-hidden,
+.e-height-modify-btn-group.e-hidden {
+  display: none;
+}
+
+.e-weight-modify-btn-group,
+.e-height-modify-btn-group {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  margin-top: 32px;
+}
+
+.e-weight-modify-btn-group .e-active,
+.e-height-modify-btn-group .e-active {
+  background-color: #F15223;
+  color: #FFFFFF;
+}
+
+.e-profile-edit-dialog .e-dlg-header-content {
+  background: #FFFFFF;
+  border-bottom: 1px solid #E1E9ED;
+}
+
+.e-dialog.e-profile-edit-dialog.e-device {
+    max-height: fit-content !important;
+}
+
+.e-control-wrapper.e-slider-container .e-slider .e-handle,
+.e-control-wrapper.e-slider-container .e-slider .e-handle.e-tab-handle {
+  background-color: #F15223;
+  border: 1px solid #F15223;
+  border-color: #F15223;
+  box-shadow: none;
+  height: 24px;
+  width: 24px;
+  border-radius: 12px;
+}
+
+.e-control-wrapper.e-slider-container .e-slider.weight-slider-container .e-handle,
+.e-control-wrapper.e-slider-container .e-slider.weight-slider-container .e-handle.e-tab-handle {
+  top: calc(50% - 12px);
+}
+
+.e-control-wrapper.e-slider-container .e-slider.height-slider-container .e-handle,
+.e-control-wrapper.e-slider-container .e-slider.height-slider-container .e-handle.e-tab-handle {
+  left: calc(50% - 8px);
+}
+
+.e-control-wrapper.e-slider-container .e-slider.height-slider-container .e-slider-track,
+.e-control-wrapper.e-slider-container .e-slider.height-slider-container .e-limit-bar,
+.e-control-wrapper.e-slider-container .e-slider.height-slider-container .e-range {
+  width: 8px;
+}
+
+.e-control-wrapper.e-slider-container .e-slider .e-range {
+  background-color: #F15223;
+  height: 8px;
+}
+
+.e-control-wrapper.e-slider-container.e-horizontal .e-slider-track {
+  height: 8px;
+}
+
+.e-control-wrapper.e-slider-container.e-horizontal .e-limits,
+.e-control-wrapper.e-slider-container.e-vertical .e-slider .e-limits {
+  background-color: transparent;
+}
+
+.e-calendar .e-content td.e-today:hover span.e-day,
+.e-calendar .e-content td.e-focused-date.e-today:hover span.e-day,
+.e-calendar .e-content td.e-focused-date.e-today span.e-day,
+.e-calendar .e-content td.e-today span.e-day {
+  color: #F15223;
+  background-color: #FFFFFF;
+  border: none;
+  box-shadow: inset 1px 0 #F15223, inset 0 1px #F15223, inset -1px 0 #F15223, inset 0 -1px #F15223;
+}
+
+.e-calendar .e-content td.e-selected span.e-day,
+.e-calendar .e-content.e-year td.e-selected:hover span.e-day,
+.e-calendar .e-content td.e-selected:hover span.e-day,
+.e-calendar .e-content td.e-selected.e-focused-date span.e-day,
+.e-calendar .e-footer-container .e-btn.e-today.e-flat.e-primary:not(:hover),
+.e-calendar .e-btn.e-today.e-flat.e-primary:active,
+.e-calendar .e-btn.e-today.e-flat.e-primary:hover,
+.e-calendar .e-css.e-btn.e-today.e-flat.e-primary:hover,
+.e-calendar .e-content.e-decade td.e-selected:hover span.e-day {
+  background-color: #F15223;
+  color: #FFFFFF;
+  border: none;
+  box-shadow: none;
+}
+
+.slider-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.e-base-container {
+  display: flex;
+  justify-content: center;
+  padding-top: 20px;
+}
+
+.e-height-img-container {
+  display: flex;
+  align-items: flex-end;
+  width: 30%;
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+}
+
+.e-profile-height-label {
+  white-space: nowrap;
+  -webkit-transform: inherit !important;
+  transform: inherit !important;
+  position: absolute;
+  padding: 2px 8px;
+  font-weight: 700;
+  font-size: 21.3765px;
+  width: auto !important;
+}
+
+.e-profile-height-label>span {
+  display: contents;
+  font-size: 16px !important;
+}
+
+.e-weight-gauge-annotation {
+  font-weight: 700;
+  font-size: 21.3765px;
+  line-height: 125%;
+  color: #000000;
+}
+
+.e-height-gauge-container,
+.e-weight-gauge-container {
+  padding: inherit;
+  width: 100%;
+  padding-top: 20px;
+}
+
+.e-height-gauge-container.e-hidden,
+.e-weight-gauge-container.e-hidden {
+  display: none;
+}
+
+.e-height-gauge-annotation {
+  font-weight: 700;
+  font-size: 21.3765px;
+  line-height: 125%;
+  color: #000000;
+}
+
+.e-add-weight,
+.e-cancel-weight,
+.e-add-height,
+.e-cancel-height {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.e-btn-group input:checked+label.e-btn {
+  background-color: #F15223 !important;
+  color: #FFFFFF;
+}
+
+.e-add-weight button,
+.e-add-height button {
+  height: 40px;
+  background-color: #F15223 !important;
+  border: none !important;
+}
+
+.e-cancel-weight button,
+.e-cancel-height button {
+  height: 40px;
+}
+
+.e-tab .e-tab-header-icon,
+.e-profile-edit-icon {
+  font-size: 32px !important;
+  color: #F15223 !important;
+  background-color: #FFFFFF !important;
+  border-radius: 8px !important;
+}
+
+.e-tab .e-tab-header .e-tab-title {
+  float: left !important;
+  margin-left: 10px;
+  margin-top: 15px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 125%;
+  color: #56648A;
+  padding-top: 8px;
+}
+
+.e-profile-edit-btn {
+    width: 24px;
+    height: 24px;
+    font-size: 18px;
+    position: absolute;
+    left: calc(50% + 16px);
+    top: calc(0% - 38px);
+    border-radius: 50%;
+    background-color: #6d8971 !important;
+    color: #FFFFFF !important;
+    border: none;
+}
+
+.e-dark .e-profile-edit-btn,
+.e-dark .e-profile-edit-btn:focus,
+.e-dark .e-profile-edit-btn:active {
+    color: #313246 !important;
+}
+
+.e-profile-edit-btn .icon-edit-2 {
+    margin-top: -12px;
+    margin-left: -5px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.e-profile-edit-btn:focus,
+.e-profile-edit-btn:active {
+    background-color: #6d8971 !important;
+    color: #FFFFFF !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+.e-tab .e-tab-header .e-tab-title,
+.e-profile-edit-title {
+  float: left !important;
+  margin-left: 10px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 125%;
+  color: #56648A;
+  padding-top: 7px;
+}
+
+.e-tab .e-tab-header .e-tab-title>span,
+.e-profile-edit-title>span {
+  font-weight: 700 !important;
+}
+
+.e-profile-back {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 125%;
+  color: #F15223;
+  cursor: pointer;
+}
+
+.e-profile-title {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 125%;
+  color: #303343;
+  margin-top: 24px;
+}
+
+.e-profile-pic-container {
+  width: 80px;
+  height: 80px;
+  background: #FFC6B5;
+  border-radius: 50%;
+}
+
+.e-profile-details {
+  margin-top: 32px;
+}
+
+.e-modify-title {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 125%;
+  color: #303343;
+  text-align: center;
+}
+
+.e-age-edit {
+  display: flex;
+  background-color: #F4F5F7;
+  border-radius: 4px;
+  margin-top: 4px;
+  width: 40%;
+}
+
+.e-profile-container div,
+.e-edit-dialog-container {
+  padding: 0;
+}
+
+.e-edit-dialog-container {
+  margin-top: 10px;
+}
+
+.e-profile-label {
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 125%;
+  color: #56648A;
+}
+
+.e-profile-value {
+  margin-top: 4px;
+  margin-bottom: 20px;
+  display: flex;
+}
+
+.e-profile-back-text {
+  margin-left: 10px;
+  cursor: default;
+}
+
+.e-weight-change-btn,
+.e-goal-change-btn,
+.e-height-change-btn,
+.e-weight-change-btn:hover,
+.e-goal-change-btn:hover,
+.e-height-change-btn:hover {
+  background-color: #FFFFFF !important;
+  border: 1px solid #F15223 !important;
+  border-radius: 4px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 125%;
+  color: #F15223 !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 16px !important;
+  padding-right: 16px !important;
+  cursor: pointer;
+}
+
+.e-weight-change-btn:active,
+.e-goal-change-btn:active,
+.e-height-change-btn:active,
+.e-weight-change-btn:focus,
+.e-goal-change-btn:focus,
+.e-height-change-btn:focus {
+  color: #FFFFFF !important;
+  border: 1px solid #F15223 !important;
+  background-color: #F15223 !important;
+}
+
+.e-change-right {
+  font-size: 18px;
+  margin-left: 10px;
+}
+
+.e-tab .e-tab-header .e-tab-wrap:hover {
+  color: #F15223 !important;
+  background: initial !important;
+}
+
+.e-tab .e-tab-header .e-toolbar-item .e-tab-wrap:hover .e-tab-text,
+.e-tab .e-tab-header .e-toolbar-item .e-tab-wrap:hover .e-tab-icon {
+  color: #F15223 !important;
+}
+
+.e-tab .e-tab-header .e-toolbar-items {
+  width: calc(100% - 150px) !important;
+  text-align: center !important;
+}
+
+.e-tab .e-tab-header .e-toolbar-items .e-tab-wrap {
+  text-align: center !important;
+}
+
+.e-heart-rate-card {
+  /* background: linear-gradient(242.93deg, #9BEAFF -8.23%, #2084FE 96.9%); */
+  background-image: url(./assets/Profile/01.svg);
+  border-radius: 30px;
+  background-size: cover;
+  background-position-y: center;
+}
+
+.e-steps-card {
+  /* background: linear-gradient(43.81deg, #F542A7 0%, #FFBABE 114.67%); */
+  background-image: url(./assets/Profile/02.svg);
+  border-radius: 30px;
+  background-size: cover;
+  background-position-y: center;
+}
+
+.e-calories-card {
+  /* background: linear-gradient(42.9deg, #FFAF65 2.17%, #FFE8C7 114.69%); */
+  background-image: url(./assets/Profile/03.svg);
+  border-radius: 30px;
+  background-size: cover;
+  background-position-y: center;
+}
+
+.e-sleep-card {
+  /* background: linear-gradient(222.15deg, #93F7EE -10.41%, #02C3DE 97.98%); */
+  background-image: url(./assets/Profile/04.svg);
+  border-radius: 30px;
+  background-size: cover;
+  background-position-y: center;
+}
+
+.e-tab .e-tab-header .e-toolbar-item.e-active .e-tab-text,
+.e-tab .e-tab-header .e-toolbar-item.e-active .e-tab-icon {
+  color: #F15223 !important;
+}
+
+.e-tab .e-tab-header .e-toolbar-item.e-active .e-tab-text {
+  font-weight: 700;
+}
+
+.e-tab .e-tab-header .e-tab-icon::before {
+  font-size: 32px !important;
+}
+
+.e-tab .e-tab-header .e-indicator {
+  background: #F15223 !important;
+}
+
+.e-card .e-card-header .e-card-header-image {
+  font-size: 28px;
+  align-items: center;
+  color: #FFFFFF;
+}
+
+.e-card .e-card-header .e-card-header-caption {
+  padding: 0;
+}
+
+.e-card {
+  margin-right: 15px;
+  float: left;
+}
+
+.e-activity-card-container {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  overflow: auto;
+  width: 100%;
+  display: inline-table;
+}
+
+.e-activity-card-container .e-card-header {
+  height: 45%;
+}
+
+.e-activity-card-container .e-card-content {
+  height: 55%;
+}
+
+.e-activity-card-title,
+.e-steps-card-title,
+.e-calories-card-title,
+.e-sleep-card-title {
+  font-weight: 700 !important;
+  font-size: 20px !important;
+  line-height: 125% !important;
+  color: #FFFFFF !important;
+  text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.2) !important;
+}
+
+.e-activity-actual {
+  white-space: nowrap;
+  font-weight: 600;
+  font-size: 36px;
+  line-height: 125%;
+  color: #FFFFFF;
+  text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.2);
+}
+
+.e-activity-actual .e-activity-actual-unit {
+  font-size: 20px;
+}
+
+.e-activity-goal {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 125%;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.e-workout-panel {
+  height: auto !important;
+}
+
+.e-bpm-value {
+  font-size: 36px;
+  font-weight: 600;
+  color: #FFFFFF;
+  align-self: center;
+  width: auto;
+  white-space: nowrap;
+}
+
+.e-bpm-value>span {
+  font-size: 20px;
+}
+
+.e-card.e-heart-rate-card .e-card-content {
+  justify-content: flex-start;
+}
+
+.e-progress-annotation {
+  width: auto;
+  height: inherit;
+  align-self: center;
+}
+
+.e-progress-annotation>img {
+  width: 30px;
+}
+
+.e-my-activities-panel {
+  overflow: auto;
+}
+
+.e-my-activities-panel {
+  margin-top: 36px;
+}
+
+.e-workout-panel,
+.e-activity-panel {
+  margin-top: 24px;
+}
+
+.e-fasting-panel,
+.e-water-panel,
+.e-fasting-chart-panel,
+.e-diet-chart-panel,
+.e-workout-panel,
+.e-activity-panel {
+  padding: 24px !important;
+}
+
+.e-my-activities-header {
+  padding: 0 !important;
+  margin-top: 4px;
+}
+
+.e-my-activities-panel .e-panel-header {
+  padding: 0 !important;
+  margin-bottom: 20px;
+}
+
+.e-my-activities-date {
+  float: right;
+  padding-right: 0;
+}
+
+.e-workout-panel .e-panel-header,
+.e-activity-panel .e-panel-header {
+  width: 100%;
+  border-radius: 24px;
+}
+
+.e-activity-panel,
+.e-workout-panel,
+.e-profile-panel,
+.e-activity-profile-panel,
+.e-diet-profile-panel,
+.e-fasting-profile-panel,
+.e-fasting-panel,
+.e-water-panel,
+.e-fasting-chart-panel {
+  background: #FFFFFF !important;
+  border: 1px solid #ECF3F8 !important;
+  box-sizing: border-box !important;
+  box-shadow: 0px 14px 50px 8px rgba(166, 156, 255, 0.08) !important;
+  border-radius: 24px !important;
+}
+
+.e-fasting-chart-panel {
+  margin-top: 24px;
+}
+
+.e-water-panel {
+  margin-left: 20px;
+}
+
+.e-water-panel {
+  height: auto !important;
+}
+
+.e-chart-dropdown {
+  float: right;
+  padding: 0;
+}
+
+.e-grid,
+.e-chart {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.e-grid .e-content {
+  overflow-y: hidden !important;
+}
+
+.e-grid .e-gridheader {
+  padding-right: 0 !important;
+}
+
+.e-activity-chart svg {
+  margin-top: 5px;
+}
+
+.e-grid .e-row.e-altrow {
+  background-color: #F5F8FB;
+  border-radius: 6px;
+}
+
+.e-grid .e-headercell {
+  background-color: #F5F8FB;
+}
+
+.e-grid .e-columnheader {
+  height: 52px !important;
+}
+
+.e-grid .e-rowcell.completion-color {
+  color: #F15223 !important;
+}
+
+.e-grid .e-rowcell {
+  font-weight: 400 !important;
+  font-size: 18px !important;
+  line-height: 125% !important;
+  color: #303343 !important;
+}
+
+.e-grid .e-headercell .e-headertext {
+  font-weight: 600 !important;
+  font-size: 14px !important;
+  line-height: 125% !important;
+  color: #303343 !important;
+  text-transform: none !important;
+}
+
+.e-dialog .e-dlg-header-content {
+  border-radius: 0 !important;
+}
+
+.e-panel-header {
+  font-weight: 600 !important;
+  font-size: 24px !important;
+  line-height: 125% !important;
+  color: #303343 !important;
+  background: #FFFFFF !important;
+  padding: 0 !important;
+}
+
+.e-activity-highlight {
+  color: #F15223;
+}
+
+.e-meals-highlight {
+  color: #CDC5FF;
+}
+
+.e-diet-card {
+  background: #FAFAFC !important;
+  border: 1px solid #F1F1F8 !important;
+  box-sizing: border-box !important;
+  border-radius: 16px !important;
+  width: 100% !important;
+  margin-bottom: 12px !important;
+}
+
+.e-diet-card .e-card-header {
+  padding: 20px !important;
+}
+
+.e-diet-card .e-card-header-title {
+  font-weight: 600 !important;
+  font-size: 16px !important;
+  line-height: 125% !important;
+  color: #303343 !important;
+}
+
+.e-diet-card .e-card-header-sub-title {
+  font-weight: 500 !important;
+  font-size: 11px !important;
+  line-height: 125% !important;
+  color: #7D96A6 !important;
+  margin-top: 10px !important;
+}
+
+.e-heart-rate-card .e-card-header-sub-title {
+  font-weight: 500 !important;
+  font-size: 18px !important;
+  line-height: 125% !important;
+  color: #FFFFFF !important;
+  opacity: 0.75 !important;
+  margin-top: 8px;
+}
+
+.e-tab-header-icon {
+  background: #F15223 !important;
+  border-radius: 8px !important;
+  width: 32px !important;
+  height: 32px !important;
+  float: left !important;
+  font-size: 32px !important;
+}
+
+.e-tab-header .e-tab-title {
+  float: left !important;
+}
+
+.e-progressbar {
+  overflow: hidden;
+}
+
+.e-workout-panel .e-panel-container,
+.e-activity-panel .e-panel-container {
+  width: 100%;
+}
+
+.e-my-activities-panel .e-panel-container {
+  width: 100%;
+}
+
+.e-dashboardlayout.e-control .e-panel {
+  box-shadow: none;
+}
+
+.e-dashboardlayout.e-control .e-panel:hover {
+  box-shadow: none;
+}
+
+.e-panel.e-my-activities-panel,
+.e-panel.e-meals-panel {
+  border: none !important;
+}
+
+.e-panel.e-my-activities-panel:hover,
+.e-panel.e-meals-panel:hover {
+  border: none;
+}
+
+.e-panel.e-my-activities-panel:active,
+.e-panel.e-meals-panel:active {
+  background: #FFFFFF !important;
+}
+
+.e-tab .e-tab-header {
+  padding: 5px 0 0 20px;
+  top: 0 !important;
+  position: sticky !important;
+  background: #FFFFFF !important;
+}
+
+.e-profile-pic {
+  width: 80px;
+  height: 80px;
+  background: #FFC6B5;
+  border-radius: 50%;
+  float: left;
+}
+
+.e-profile-details {
+  width: 100%;
+}
+
+.e-heart-rate-card,
+.e-steps-card,
+.e-calories-card,
+.e-sleep-card {
+  width: 24.25%;
+  height: 200px;
+  min-width: 160px;
+  margin-right: 1% !important;
+}
+
+.e-heart-rate-card .e-card-content,
+.e-steps-card .e-card-content,
+.e-calories-card .e-card-content,
+.e-sleep-card .e-card-content {
+  margin-top: 5% !important;
+}
+
+.e-heart-rate-card .e-card-content {
+  display: flex;
+}
+
+.e-activity-card-title {
+  float: left;
+}
+
+.e-activity-card-sub-title {
+  float: right;
+}
+
+.e-profile-pic-text {
+  font-size: 30px;
+  font-weight: 500 !important;
+  color: #FFFFFF;
+}
+
+.gauge-container {
+  display: block;
+  width: 100%;
+}
+
+.e-diet-panel-header-text,
+.e-consumed {
+  float: left;
+}
+
+.e-diet-panel-header-text {
+  padding: 0 !important;
+}
+
+.e-consumed,
+.e-burned {
+  padding: 0 !important;
+}
+
+.e-consumed-wrapper-value {
+  font-weight: 600;
+  font-size: 32px;
+  color: #303343;
+  padding: 0 !important;
+  white-space: nowrap;
+}
+
+.e-consumed-wrapper-text {
+  float: left;
+  white-space: normal !important;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 125%;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: #B5C2CA;
+  padding: 0 !important;
+}
+
+.e-pie-chart-container {
+  width: 35%;
+  display: inline-block;
+}
+
+.e-nutrition-table {
+  width: 100%;
+  height: 80%;
+}
+
+.e-nutrition-container {
+  width: 65%;
+  margin-left: 60px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.e-nutrition-img {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  float: left;
+  margin-right: 8px;
+}
+
+.e-nutrition-protein-img {
+  background: #4DD291;
+}
+
+.e-nutrition-fat-img {
+  background: #FC892C;
+}
+
+.e-nutrition-carbo-img {
+  background: #FFC147;
+}
+
+.e-nutrition-calcium-img {
+  background: #E25641;
+}
+
+.e-nutrition-sodium-img {
+  background: #901C53;
+}
+
+.e-nutrition-iron-img {
+  background: #CB4967;
+}
+
+.e-nutrition-text {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 125%;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: #7D96A6;
+}
+
+.e-nutrition-value {
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 125%;
+  color: #303343;
+  margin-top: 8px;
+}
+
+.e-chart-parent-div {
+  width: 100%;
+  display: flex;
+}
+
+.e-meals-card {
+  width: 19.2%;
+  min-width: 170px;
+  height: 320px;
+  margin-right: 1%;
+  background: #FFFFFF;
+  border: 1px solid #E1E9ED;
+  box-sizing: border-box;
+  border-radius: 24px;
+  box-shadow: 0px 14px 50px 8px rgba(166, 156, 255, 0);
+}
+
+.e-meals-card,
+.e-meals-card:active,
+.e-meals-card:hover,
+.e-meals-card:focus {
+  background: #FFFFFF;
+}
+
+.e-meals-card .e-card-header {
+  width: 100%;
+  display: flex;
+}
+
+.e-meals-edit {
+  width: 55%;
+}
+
+.e-meals-edit .icon-edit-2 {
+  width: 20px;
+  height: 20px;
+  color: #7D96A6;
+  float: right;
+  font-size: 18px;
+}
+
+.e-meals-edit .icon-edit-2:hover {
+  cursor: pointer;
+}
+
+.e-meals-card .e-card-header .e-card-header-image {
+  font-size: 42px;
+  color: #222222;
+}
+
+.e-meals-card .e-card-header-img-container {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+}
+
+.e-breakfast-card-container {
+  background: #FF7D7D;
+}
+
+.e-snack1-card-container {
+  background: #FFD67C;
+}
+
+.e-lunch-card-container {
+  background: #CDC5FF;
+}
+
+.e-snack2-card-container {
+  background: #FF9F86;
+}
+
+.e-dinner-card-container {
+  background: #9FDBFF;
+}
+
+.e-meals-card .e-card-header-title {
+  font-weight: 700;
+  font-size: 24px !important;
+  line-height: 125%;
+  color: #303343;
+}
+
+.e-meals-card .e-had-meals {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 150%;
+  color: #7D96A6;
+  margin-top: 16px;
+  height: 65px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+.e-meals-card .e-calories-gain {
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 125%;
+  color: #000000;
+  margin-top: 42px;
+  margin-bottom: 24px;
+}
+
+.e-diet-chart-panel {
+  background: #FFFFFF !important;
+  border: 1px solid #E1E9ED !important;
+  box-sizing: border-box !important;
+  box-shadow: 0px 14px 50px 8px rgba(166, 156, 255, 0.08) !important;
+  border-radius: 20px !important;
+  margin-top: 24px;
+  height: auto !important;
+}
+
+.e-meals-panel {
+  background: #fdfdff !important;
+  margin-top: 36px;
+}
+
+.e-meals-card-container {
+  display: -webkit-inline-box;
+  margin-top: 32px;
+  overflow: auto;
+  width: 100%;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+.e-dinner-card,
+.e-sleep-card {
+  margin-right: 0 !important;
+}
+
+.e-recom-meals-text {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 150%;
+  color: #7D96A6;
+  margin-top: 16px;
+}
+
+.e-recom-meals-value {
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 125%;
+  color: #D4E1E9;
+  margin-top: 4px;
+}
+
+.e-add-menu-btn,
+.e-add-menu-btn:hover,
+.e-add-menu-btn:active,
+.e-add-menu-btn:focus {
+  background-color: #FFEAE3;
+  border-radius: 8px;
+  border: none;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 125%;
+  text-align: center;
+  color: #F15223;
+  height: 48px;
+  width: 100%;
+  margin: 32px 0 24px 0;
+  box-shadow: none;
+}
+
+.e-card-cal-unit {
+  font-size: 16px;
+}
+
+.e-add-cal-unit {
+  font-weight: 500;
+  color: #7D96A6;
+}
+
+.e-profile-panel,
+.e-activity-profile-panel,
+.e-diet-profile-panel,
+.e-fasting-profile-panel {
+  height: auto !important;
+  display: block;
+  overflow-y: auto;
+  overflow-x: hidden;
+  margin-top: 36px !important;
+}
+
+.e-profile-panel .e-panel-container,
+.e-activity-profile-panel .e-panel-container,
+.e-diet-profile-panel .e-panel-container,
+.e-fasting-profile-panel .e-panel-container {
+  width: 100%;
+  padding: 24px;
+}
+
+.e-fasting-header {
+  font-weight: 700;
+  font-size: 24px;
+  color: #303343;
+  margin: 0 0 20px 20px;
+}
+
+.e-fasting-gauge {
+  margin: 20px 0;
+}
+
+.e-gauge-percent-img {
+  width: 42px;
+  height: 42px;
+  background: linear-gradient(90deg, #FB5F64 0%, #FC9A62 106.75%);
+  border: 2px solid #FFFFFF;
+  border-radius: 42px;
+  color: #FFFFFF;
+  font-size: 28px;
+  line-height: 130%;
+  text-align: center;
+}
+
+.e-gauge-status-img {
+  width: 22px;
+  height: 22px;
+  background-color: #FFFFFF;
+  border-radius: 22px;
+  color: #E25641;
+  font-size: 16px;
+  line-height: 130%;
+  text-align: center;
+}
+
+.e-gauge-status-img.icon-Thunder {
+  color: #FFC147;
+}
+
+.e-fasting-label-container,
+.e-fasting-value-container,
+.e-fasting-button-container {
+  display: flex;
+}
+
+.e-fasting-label-container div,
+.e-fasting-value-container div {
+  width: 50%;
+  text-align: center;
+}
+
+.e-fasting-label-container {
+  font-weight: 500;
+  font-size: 14px;
+  color: #7D96A6;
+}
+
+.e-fasting-value-container {
+  font-weight: 500;
+  font-size: 20px;
+  color: #000000;
+}
+
+.e-fasting-button-container {
+  margin: 24px 0;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.e-fast-time-btn,
+.e-fast-end-btn {
+  width: 38%;
+  min-width: 120px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 125%;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.e-menu-add,
+.e-start-fast,
+.e-menu-cancel,
+.e-fasting-cancel {
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+.e-dialog .e-footer-content {
+  padding: 18px;
+}
+
+.e-dialog .e-footer-content .e-btn {
+  margin-left: 18px;
+}
+
+.e-menu-cancel,
+.e-fasting-cancel {
+  margin-left: 0 !important;
+}
+
+
+.e-menu-add,
+.e-menu-add:focus,
+.e-start-fast,
+.e-start-fast:focus,
+.e-menu-cancel,
+.e-menu-cancel:focus,
+.e-fasting-cancel,
+.e-fasting-cancel:focus,
+.e-fast-time-btn,
+.e-fast-end-btn,
+.e-fast-time-btn:focus,
+.e-fast-end-btn:focus {
+  height: 40px;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.e-menu-cancel,
+.e-menu-cancel:hover,
+.e-menu-cancel:active,
+.e-menu-cancel:focus,
+.e-fasting-cancel,
+.e-fasting-cancel:hover,
+.e-fasting-cancel:active,
+.e-fasting-cancel:focus,
+.e-fast-time-btn,
+.e-fast-time-btn:hover,
+.e-fast-time-btn:active,
+.e-fast-time-btn:focus {
+  background-color: #FFEAE3 !important;
+  color: #F15223 !important;
+}
+
+.e-fast-time-btn.e-fast-reset,
+.e-fast-time-btn.e-fast-reset:hover,
+.e-fast-time-btn.e-fast-reset:active,
+.e-fast-time-btn.e-fast-reset:focus {
+  background-color: #F15223 !important;
+  color: #FFFFFF !important;
+}
+
+.e-menu-add,
+.e-menu-add:hover,
+.e-menu-add:active,
+.e-menu-add:focus,
+.e-start-fast,
+.e-start-fast:hover,
+.e-start-fast:active,
+.e-start-fast:focus,
+.e-fast-end-btn,
+.e-fast-end-btn:hover,
+.e-fast-end-btn:active,
+.e-fast-end-btn:focus {
+  background-color: #F15223 !important;
+  color: #FFFFFF !important;
+}
+
+.e-fast-end-btn.e-fast-reset,
+.e-fast-end-btn.e-fast-reset:hover,
+.e-fast-end-btn.e-fast-reset:active,
+.e-fast-end-btn.e-fast-reset:focus {
+  background-color: #FFEAE3 !important;
+  color: #F15223 !important;
+}
+
+.e-fast-start-label,
+.e-fast-end-label,
+.e-fast-total-label {
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 125%;
+  color: #56648A;
+  margin-top: 24px;
+}
+
+.e-fast-total-value {
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 125%;
+  color: #303343;
+  margin-top: 12px;
+}
+
+.e-fast-start-date,
+.e-fast-end-date {
+  margin-top: 4px;
+}
+
+.e-water-label-container,
+.e-water-value-container {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.e-water-minus,
+.e-water-plus {
+  background: #FFEAE3;
+  border-radius: 50%;
+  width: 56px;
+  height: 56px;
+  min-width: 56px;
+  font-size: 30px;
+  color: #F15223;
+  vertical-align: middle;
+  line-height: 52px;
+  text-align: center;
+  margin: 0 10%;
+  cursor: pointer;
+}
+
+.e-water-count {
+  font-weight: 600;
+  font-size: 40px;
+  line-height: 125%;
+  color: #56648A;
+  min-width: 90px;
+  margin-left: 10px;
+}
+
+.e-water-image {
+  width: 40px;
+  height: 56px;
+  font-size: 52px;
+  color: #3993F5;
+}
+
+.e-water-label-container {
+  padding: 24px 0;
+}
+
+.e-water-value-container {
+  padding: 34px 0;
+}
+
+.e-water-consumed-text {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 150%;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: #B5C2CA;
+  width: 90px;
+}
+
+.e-water-consumed-value {
+  font-weight: 600;
+  font-size: 40px;
+  line-height: 125%;
+  color: #303343;
+  margin-left: 16px;
+  white-space: nowrap;
+}
+
+.e-water-consumed-expect {
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 125%;
+  color: #56648A;
+}
+
+.e-fast-ellapsed {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 125%;
+  text-align: center;
+  color: #7D96A6;
+}
+
+.e-fast-completed {
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 125%;
+  text-align: center;
+  color: #000000;
+  margin-top: 4px;
+}
+
+.e-fast-left {
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 125%;
+  text-align: center;
+  color: #FB5F64;
+  margin-top: 4px;
+}
+
+.e-water-annotation-text {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 125%;
+  color: #56648A;
+}
+
+.e-highlight-text {
+  font-weight: 700;
+}
+
+.e-fasting-dialog .e-footer-content {
+  background-color: #FFFFFF;
+}
+
+.e-fasting-dialog .e-dlg-content {
+  padding-bottom: 100px;
+}
+
+.e-fasting-dialog .e-dlg-header-content,
+.e-add-menu-dialog .e-dlg-header-content {
+  background-color: #FFFFFF;
+  border-bottom: 1px solid #E1E9ED;
+}
+
+.e-add-menu-dialog .e-footer-content {
+  background-color: #FFFFFF;
+}
+
+.e-fast-start-date .e-datetime-wrapper,
+.e-fast-end-date .e-datetime-wrapper {
+  background-color: #F4F5F7;
+}
+
+.e-select-menu-label {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 125%;
+  color: #56648A;
+}
+
+.e-current-menu-container .e-menu-card {
+  height: 64px;
+  width: 80px;
+  background: #F4F5F7;
+  border-radius: 4px;
+  line-height: 125% !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: none !important;
+  border: none !important;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.e-current-menu-container .e-menu-card.e-card-select {
+  background: #FFF4F0;
+  border: 1px solid #F15223 !important;
+}
+
+.e-current-menu-container .e-menu-card .e-card-content {
+  text-align: center;
+  padding: 0 !important;
+}
+
+.e-current-menu-container .e-menu-card .e-menu-div {
+  font-weight: 500;
+  font-size: 13px !important;
+  color: #466485 !important;
+}
+
+.e-current-menu-container {
+  display: flex;
+  margin-top: 18px;
+}
+
+.e-quantity-label-container,
+.e-quantity-date-label-container {
+  display: flex;
+  margin-top: 32px;
+}
+
+.e-quantity-label,
+.e-recommended-label,
+.e-total-label {
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 125%;
+  color: #56648A;
+  width: 26%;
+}
+
+.e-recommended-label,
+.e-total-label {
+  max-width: 120px;
+}
+
+.e-quantity-date-label,
+.e-quantity-time-label {
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 125%;
+  color: #56648A;
+  width: 40%;
+}
+
+.e-quantity-value-container,
+.e-quantity-date-value-container {
+  display: flex;
+  margin-top: 4px;
+}
+
+.e-quantity-date-value,
+.e-quantity-time-value {
+  width: 40%;
+}
+
+.e-quantity-value {
+  display: flex;
+  background: #F4F5F7;
+  border-radius: 4px;
+  margin-top: 4px;
+  width: 90%;
+}
+
+.e-quantity-count,
+.e-quantity-plus,
+.e-quantity-minus,
+.e-age-count,
+.e-age-plus,
+.e-age-minus {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 125%;
+  color: #303343;
+  width: 33%;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.e-quantity-plus,
+.e-quantity-minus,
+.e-age-plus,
+.e-age-minus {
+  cursor: pointer;
+}
+
+.e-quantity-container {
+  width: 26%;
+}
+
+.e-quantity-total-container,
+.e-quantity-recom-container {
+  width: 26%;
+  max-width: 120px;
+}
+
+.e-quantity-total {
+  color: #303343;
+}
+
+.e-quantity-recom {
+  color: #7D96A6;
+}
+
+.e-quantity-total,
+.e-quantity-recom {
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 125%;
+  margin-top: 13px;
+}
+
+.e-radio-container {
+  margin-top: 12px !important;
+}
+
+.e-radio-container .e-radio:checked+label::before {
+  background-color: #F15223;
+  border-color: #F15223;
+}
+
+.e-radio-container .e-radio+label:focus::before {
+  box-shadow: 0 0 0 2px rgb(255 255 255 / 95%), 0 0 0 4px #F15223;
+}
+
+.e-radio-container .e-radio:focus+label::before {
+  border-color: #d1d5db;
+  box-shadow: 0 0 0 2px rgb(255 255 255 / 95%), 0 0 0 4px #F15223;
+}
+
+.e-dark-radio {
+  margin-left: 40px;
+}
+
+.e-profile-input {
+  background-color: #F4F5F7 !important;
+  border: none !important;
+}
+
+.e-profile-input>input {
+  height: 40px !important;
+}
+
+.e-profile-input.e-input-focus {
+  box-shadow: none !important;
+}
+
+.e-profile-input.e-edit-color {
+  background-color: #FFEDC7 !important;
+}
+
+.e-custom-card .e-card-header-title {
+  font-weight: 600 !important;
+  font-size: 18px !important;
+  line-height: 125% !important;
+  text-align: center !important;
+  color: #303343 !important;
+}
+
+.e-custom-card .e-card-header-sub-title {
+  font-weight: 500 !important;
+  font-size: 10px !important;
+  line-height: 125% !important;
+  text-align: center !important;
+  color: #56648A !important;
+}
+
+body.e-dark .e-activity-panel,
+body.e-dark .e-workout-panel,
+body.e-dark .e-diet-chart-panel,
+body.e-dark .e-activity-profile-panel,
+body.e-dark .e-diet-profile-panel,
+body.e-dark .e-fasting-profile-panel,
+body.e-dark .e-panel-header,
+body.e-dark .e-meals-card,
+body.e-dark .e-meals-card:active,
+body.e-dark .e-meals-card:hover,
+body.e-dark .e-quantity-value {
+    background-color: #26273b !important;
+    border-color: #26273b !important;
+    box-shadow: none !important;
+    color: #F4F5F7 !important;
+}
+
+body.e-dark .e-current-menu-container .e-menu-card {
+  background-color: #26273b !important;
+  color: #F4F5F7 !important;
+}
+
+body.e-dark .e-fasting-panel,
+body.e-dark .e-water-panel,
+body.e-dark .e-fasting-chart-panel {
+  background-color: #26273b !important;
+  color: #F4F5F7 !important;
+  box-shadow: none !important;
+  border-color: #26273b !important;
+}
+
+body.e-dark,
+body.e-dark .e-meals-panel,
+body.e-dark .e-panel.e-meals-panel:active,
+body.e-dark .e-panel.e-my-activities-panel,
+body.e-dark .e-panel.e-my-activities-panel:active,
+body.e-dark .e-tab .e-tab-header,
+body.e-dark .e-my-activities-panel .e-panel-header,
+body.e-dark .e-tab-header-mobile-icon-container {
+  background-color: #1b1c30 !important;
+}
+
+body.e-dark .e-custom-card,
+body.e-dark .e-diet-card,
+body.e-dark .e-grid .e-row.e-altrow {
+  background-color: #313246 !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+body.e-dark .e-grid .e-headercell,
+body.e-dark .e-weight-change-btn,
+body.e-dark .e-goal-change-btn,
+body.e-dark .e-height-change-btn {
+  background-color: #26273b !important;
+}
+
+body.e-dark .e-grid .e-rowcell,
+body.e-dark .e-grid .e-headercell .e-headertext,
+body.e-dark .e-tab .e-tab-header .e-tab-title,
+body.e-dark .e-profile-edit-title,
+body.e-dark .e-quantity-count,
+body.e-dark .e-quantity-plus,
+body.e-dark .e-quantity-minus,
+body.e-dark .e-age-count,
+body.e-dark .e-age-plus,
+body.e-dark .e-age-minus,
+body.e-dark .e-profile-title,
+body.e-dark .e-modify-title,
+body.e-dark .e-weight-gauge-annotation,
+body.e-dark .e-height-gauge-annotation,
+body.e-dark .e-add-weight button,
+body.e-dark .e-add-height button,
+body.e-dark .e-quantity-total,
+body.e-dark .e-current-menu-container .e-menu-card .e-menu-div,
+body.e-dark .e-tab .e-tab-header .e-toolbar-items .e-tab-wrap,
+body.e-dark .e-tab .e-tab-header .e-toolbar-item .e-tab-wrap .e-tab-icon,
+body.e-dark .e-meals-card .e-calories-gain,
+body.e-dark .e-fasting-value-container,
+body.e-dark .e-fast-completed,
+body.e-dark .e-water-consumed-value,
+body.e-dark .e-water-count,
+body.e-dark .e-consumed-wrapper-value,
+body.e-dark .e-nutrition-value,
+body.e-dark .e-custom-card .e-card-header-title,
+body.e-dark .profile-value,
+body.e-dark .e-journal,
+body.e-dark .e-diet-card .e-card-header-title,
+body.e-dark .e-fasting-header,
+body.e-dark .e-fast-total-value,
+body.e-dark .e-tab-title {
+  color: #F4F5F7 !important;
+}
+
+body.e-dark .e-profile-edit-dialog .e-dlg-content,
+body.e-dark .e-add-menu-dialog .e-dlg-content,
+body.e-dark .e-fasting-dialog .e-dlg-content,
+body.e-dark .e-add-menu-dialog .e-footer-content,
+body.e-dark .e-fasting-dialog .e-footer-content {
+  background-color: #1b1c30 !important;
+  border: none !important;
+}
+
+body.e-dark .e-profile-edit-dialog .e-dlg-header-content,
+body.e-dark .e-fasting-dialog .e-dlg-header-content,
+body.e-dark .e-add-menu-dialog .e-dlg-header-content,
+body.e-dark .e-fasting-dialog .e-dlg-header-content {
+  background-color: #1b1c30 !important;
+  border-bottom: 1px solid #4b5563 !important;
+}
+
+body.e-dark .e-age-edit {
+  background-color: #1f2937 !important;
+}
+
+body.e-dark .e-profile-label,
+body.e-dark .e-quantity-date-label,
+body.e-dark .e-quantity-time-label,
+body.e-dark .e-quantity-label,
+body.e-dark .e-recommended-label,
+body.e-dark .e-total-label,
+body.e-dark .e-select-menu-label {
+  color: #9E9FB1 !important;
+}
+
+body.e-dark .e-add-menu-btn,
+body.e-dark .e-add-menu-btn:hover,
+body.e-dark .e-add-menu-btn:active,
+body.e-dark .e-add-menu-btn:focus,
+body.e-dark .e-menu-cancel,
+body.e-dark .e-menu-cancel:hover,
+body.e-dark .e-menu-cancel:active,
+body.e-dark .e-menu-cancel:focus,
+body.e-dark .e-fasting-cancel,
+body.e-dark .e-fasting-cancel:hover,
+body.e-dark .e-fasting-cancel:active,
+body.e-dark .e-fasting-cancel:focus,
+body.e-dark .e-fast-time-btn,
+body.e-dark .e-fast-time-btn:hover,
+body.e-dark .e-fast-time-btn:active,
+body.e-dark .e-fast-time-btn:focus,
+body.e-dark .e-fast-end-btn.e-fast-reset,
+body.e-dark .e-fast-end-btn.e-fast-reset:hover,
+body.e-dark .e-fast-end-btn.e-fast-reset:active,
+body.e-dark .e-fast-end-btn.e-fast-reset:focus {
+  background-color: #343547 !important;
+}
+
+body.e-dark .e-fast-time-btn.e-fast-reset,
+body.e-dark .e-fast-time-btn.e-fast-reset:hover,
+body.e-dark .e-fast-time-btn.e-fast-reset:active,
+body.e-dark .e-fast-time-btn.e-fast-reset:focus {
+  background-color: #F15223 !important;
+  color: #FFFFFF !important;
+}
+
+body.e-dark .e-tab .e-tab-header .e-toolbar-item .e-tab-wrap:hover .e-tab-icon {
+  color: #F15223 !important;
+}
+
+body.e-dark .e-tab .e-tab-header .e-toolbar-item.e-active .e-tab-icon {
+  color: #F15223 !important;
+}
+
+body.e-dark .e-fast-start-date .e-datetime-wrapper,
+body.e-dark .e-fast-end-date .e-datetime-wrapper,
+body.e-dark .e-profile-input {
+  background-color: #313246 !important;
+}
+
+body.e-dark .e-profile-input.e-edit-color {
+  background-color: #FFEDC7 !important;
+  color: #303343 !important;
+}
+
+body.e-dark .e-grid .e-rowcell.completion-color {
+  color: #F15223 !important;
+}
+
+body.e-dark .e-input-group-icon,
+body.e-dark .e-input-group,
+body.e-dark .e-input-group.e-input-focus.e-icon-admin {
+  border: 0px !important;
+  border-radius: 8px !important;
+  background: #313246 !important;
+}
+
+body.e-dark .e-calendar .e-content td.e-today:hover span.e-day,
+body.e-dark .e-calendar .e-content td.e-focused-date.e-today:hover span.e-day,
+body.e-dark .e-calendar .e-content td.e-focused-date.e-today span.e-day,
+body.e-dark .e-calendar .e-content td.e-today span.e-day {
+  background-color: transparent;
+}
+
+@media only screen and (max-width: 820px) {
+
+  .e-heart-rate-card,
+  .e-sleep-card,
+  .e-steps-card,
+  .e-calories-card {
+    border-radius: 30px !important;
+  }
+
+  .e-consumed-wrapper-text {
+    font-size: 12px;
+    padding: 0 !important;
+  }
+
+  .e-consumed-wrapper-value {
+    font-size: 28px;
+    padding: 0 !important;
+  }
+
+  .e-pie-chart-container {
+    width: 100%;
+    height: 40%;
+  }
+
+  .e-nutrition-container {
+    width: 100%;
+    height: 50%;
+    margin-left: 0;
+  }
+
+  .e-diet-panel-header-text {
+    font-size: 20px;
+  }
+
+  .e-chart-parent-div {
+    display: block;
+  }
+
+  .e-dashboardlayout-container {
+    height: calc(100vh - 140px) !important;
+    padding: 0 0 20px 0;
+  }
+
+  .e-profile-dashboardlayout-container {
+    padding: 0;
+  }
+
+  .e-heart-rate-card,
+  .e-steps-card,
+  .e-calories-card,
+  .e-sleep-card {
+    width: 49%;
+    height: 200px !important;
+    font-size: 20px !important;
+    margin-bottom: 3%;
+    margin-right: 0 !important;
+  }
+
+  .e-steps-card,
+  .e-sleep-card {
+    margin-left: 2%;
+  }
+
+  .e-calories-card,
+  .e-sleep-card {
+    margin-bottom: 0;
+  }
+
+  .e-bpm-value,
+  .e-activity-actual {
+    font-size: 32px !important;
+  }
+
+  .e-tab .e-tab-header .e-toolbar-items {
+    margin-left: initial;
+    width: 100% !important;
+  }
+
+  .e-meals-card .e-card-header .e-card-header-image {
+    display: block !important;
+  }
+
+  .e-tab .e-tab-header .e-toolbar-item .e-tab-text {
+    font-size: 12px;
+  }
+
+  .e-activity-card-sub-title {
+    float: left;
+  }
+
+  .e-tab .e-tab-header {
+    z-index: 1000 !important;
+    top: initial !important;
+    bottom: 0 !important;
+    position: fixed !important;
+    background: #FFFFFF !important;
+    margin-bottom: 0px !important;
+    box-shadow: 0px 14px 50px 8px rgba(166, 156, 255, 0.08);
+    padding: 5px 0;
+  }
+
+  body.e-dark .e-tab .e-tab-header {
+    box-shadow: 0px 14px 50px 8px rgba(166, 156, 255, 0.2);
+  }
+
+  .e-tab-header-icon-container {
+    display: none;
+  }
+
+  .e-tab-header-mobile-icon-container {
+    padding-left: 20px;
+    height: 60px;
+    top: 0 !important;
+    position: sticky !important;
+    background: #FFFFFF !important;
+  }
+
+  .e-tab-header-icon {
+    font-size: 32px !important;
+    color: #F15223 !important;
+    background-color: #FFFFFF !important;
+    border-radius: 8px !important;
+  }
+
+  .e-tab-title {
+    float: left !important;
+    margin-left: 10px;
+    margin-top: 15px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 125%;
+    color: #56648A;
+    padding-top: 8px;
+  }
+
+  .e-tab-title>span,
+  .e-profile-edit-title>span {
+    font-weight: 700 !important;
+  }
+
+  .separator-div {
+    height: 1px;
+    background: #E8EDF6;
+  }
+
+  .e-diet-card {
+    background: #FAFAFC;
+    border: 1px solid #F1F1F8 !important;
+    box-sizing: border-box !important;
+    border-radius: 16px !important;
+    height: auto !important;
+  }
+
+  .e-tab .e-tab-header .e-indicator {
+    display: none;
+  }
+
+  .e-activity-card-container .e-card-header {
+    height: 45%;
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+  }
+
+  .e-activity-card-container .e-card-content {
+    height: 55%;
+  }
+
+  .e-meals-card {
+    width: 30%;
+    margin-right: 10px;
+    display: inline-block;
+  }
+
+  .e-nutrition-text {
+    margin-top: 20px;
+  }
+
+  .e-diet-chart-panel .e-panel-header {
+    height: auto !important;
+  }
+
+  .e-nutrition-value {
+    font-size: 24px;
+  }
+
+  .e-diet-chart-panel {
+    height: auto !important;
+  }
+
+  .e-meals-panel {
+    height: auto !important;
+  }
+
+  .e-meals-panel .e-panel-header {
+    margin-left: 10px;
+  }
+
+  .e-fast-time-btn,
+  .e-fast-end-btn {
+    width: 40%;
+  }
+
+  .e-fasting-label-container {
+    font-size: 16px;
+  }
+
+  .e-fasting-value-container {
+    font-size: 25px;
+  }
+
+  .e-water-consumed-value {
+    font-size: 32px;
+  }
+
+  .e-water-consumed-expect {
+    font-size: 20px;
+  }
+
+  .e-water-panel,
+  .e-fasting-chart-panel {
+    margin-top: 24px !important;
+    margin-left: 0 !important;
+  }
+
+  .e-profile-panel,
+  .e-activity-profile-panel,
+  .e-fasting-profile-panel,
+  .e-diet-profile-panel {
+    height: auto !important;
+    margin-top: 24px !important;
+  }
+
+  .e-profile-panel .e-panel-container,
+  .e-activity-profile-panel .e-panel-container,
+  .e-diet-profile-panel .e-panel-container,
+  .e-fasting-profile-panel .e-panel-container {
+    padding: 20px;
+  }
+
+  .e-current-menu-container .e-menu-card {
+    min-width: 80px;
+  }
+
+  .e-current-menu-container {
+    overflow: auto;
+  }
+
+  .e-quantity-label,
+  .e-recommended-label,
+  .e-total-label {
+    width: 30%;
+  }
+
+  .e-quantity-container,
+  .e-quantity-total-container,
+  .e-quantity-recom-container {
+    width: 30%;
+  }
+
+  .e-profile-container {
+    margin-top: 10px;
+  }
+
+  .e-workout-panel {
+    margin-top: 20px !important;
+  }
+
+  .e-workout-panel .e-panel-container,
+  .e-activity-panel .e-panel-container {
+    width: 100%;
+  }
+
+  .e-my-activities-date {
+    padding-right: 2px;
+  }
+
+  .e-profile-panel {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    margin-top: 0 !important;
+  }
+
+  body.e-dark .separator-div {
+    background: #4b5563;
+  }
+
+  .e-dialog.e-add-menu-dialog,
+  .e-dialog.e-fasting-dialog {
+    max-width: 700px;
+    width: auto !important;
+  }
+
+  .e-fasting-chart-panel,
+  .e-workout-panel,
+  .e-activity-panel {
+    padding: 20px 10px !important;
+  }
+
+  .e-fasting-panel,
+  .e-water-panel,
+  .e-diet-chart-panel {
+    padding: 20px !important;
+  }
+
+  .e-grid,
+  .e-chart {
+    margin-top: 10px;
+  }
+
+  .e-profile-details {
+    margin-top: 20px !important;
+  }
+
+  .e-profile-pic-container {
+    width: 100px;
+    height: 100px;
+  }
+
+  .e-modify-container {
+    margin-top: 150px;
+  }
+
+  .e-input-group-icon,
+  .e-input-group,
+  .e-input-group.e-input-focus.e-icon-admin {
+    border: 0px !important;
+    border-radius: 8px !important;
+    box-shadow: none !important;
+    background: #F2F5F8 !important;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+
+  .e-heart-rate-card,
+  .e-steps-card,
+  .e-calories-card,
+  .e-sleep-card {
+    width: 48%;
+    height: 155px !important;
+    min-width: 144px;
+    margin-left: 0 !important;
+    border-radius: 22px !important;
+  }
+
+  .e-heart-rate-card {
+    margin-right: 4% !important;
+  }
+
+  .e-steps-card {
+    margin-right: 0 !important;
+  }
+
+  .e-calories-card {
+    margin-right: 4% !important;
+  }
+
+  .e-sleep-card {
+    margin-right: 0 !important;
+  }
+
+  .e-meals-card {
+    width: 55%;
+  }
+
+  .e-fasting-label-container {
+    font-size: 12px;
+  }
+
+  .e-fasting-value-container {
+    font-size: 14px;
+  }
+
+  .e-fast-time-btn,
+  .e-fast-end-btn {
+    width: 40%;
+  }
+
+  .e-dialog .e-footer-content {
+    display: flex;
+  }
+
+  .e-menu-add,
+  .e-start-fast,
+  .e-menu-cancel,
+  .e-fasting-cancel {
+    width: 100%;
+  }
+
+  .e-quantity-date-label,
+  .e-quantity-date-value,
+  .e-quantity-time-value {
+    width: 47%;
+  }
+
+  .e-quantity-time-label,
+  .e-quantity-time-value {
+    margin-left: 18px;
+  }
+
+  .e-consumed,
+  .e-burned {
+    padding-top: 20px !important;
+  }
+
+  .e-profile-details {
+    margin-top: 20px !important;
+  }
+
+  .e-profile-details>div:first-child {
+    text-align: center;
+  }
+
+  .e-profile-pic-container {
+    width: 100px;
+    height: 100px;
+  }
+
+  .e-modify-container {
+    margin-top: 20px;
+  }
+
+  .e-profile-panel,
+  .e-profile-container {
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+  }
+
+  .e-input-group-icon,
+  .e-input-group,
+  .e-input-group.e-input-focus.e-icon-admin {
+    border: 0px !important;
+    border-radius: 8px !important;
+    box-shadow: none !important;
+    background: #F2F5F8 !important;
+  }
+}

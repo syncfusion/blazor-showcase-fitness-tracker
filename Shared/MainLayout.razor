@@ -1,0 +1,62 @@
+﻿@inherits LayoutComponentBase
+@inject IJSRuntime JSRuntime;
+@using Microsoft.JSInterop;
+@using FitnessTracker.Data;
+@using System.Text.Json;
+@using FitnessTracker.Pages;
+@inject FitnessService SampleService;
+@implements IDisposable;
+
+<PageTitle>Fitness Tracker</PageTitle>
+<Home IsInitialized="@isCompoenentInitialized"></Home>
+
+@code{
+	private DotNetObjectReference<object>? dotnetObjectRef { get; set; }
+
+	private bool isCompoenentInitialized { get; set; }
+
+	[JSInvokable]
+	public async Task OnResize(double windowWidth)
+	{
+		SampleService.InnerWidth = windowWidth;
+		SampleService.IsSmallDevice = SampleService.InnerWidth <= 820;
+		SampleService.TabRef?.CallStateHasChanged();
+		SampleService.TabRef?.UpdateActiveTab(false);
+		if (SampleService.ProfileDialogRef != null)
+		{
+			await SampleService.ProfileDialogRef.RefreshDialog();
+		}
+		SampleService.ProfileDialogRef?.CallStateHasChanged();
+	}
+
+	protected override async Task OnAfterRenderAsync(bool firstRender)
+	{
+		await base.OnAfterRenderAsync(firstRender);
+		if (firstRender)
+		{
+			dotnetObjectRef = DotNetObjectReference.Create<object>(this);
+			isCompoenentInitialized = true;
+			string clientDetails = await JSRuntime.InvokeAsync<string>("blazorFitnessTracker.getClientDetails", dotnetObjectRef);
+			if (!string.IsNullOrEmpty(clientDetails))
+			{
+				Dictionary<string, object>? clientProps = JsonSerializer.Deserialize<Dictionary<string, object>>(clientDetails);
+				if (clientProps != null)
+				{
+					SampleService.IsDevice = Convert.ToBoolean(clientProps["isDevice"].ToString());
+					SampleService.InnerWidth = Convert.ToDouble(clientProps["innerWidth"].ToString());
+				}
+				SampleService.IsSmallDevice = SampleService.InnerWidth <= 820;
+			}
+			if (SampleService.TabRef != null)
+			{
+				SampleService.TabRef.HeaderPlacement = SampleService.IsDevice ? Syncfusion.Blazor.Navigations.HeaderPosition.Bottom : Syncfusion.Blazor.Navigations.HeaderPosition.Top;
+			}
+			StateHasChanged();
+		}
+	}
+
+	public void Dispose()
+	{
+		dotnetObjectRef?.Dispose();
+	}
+}

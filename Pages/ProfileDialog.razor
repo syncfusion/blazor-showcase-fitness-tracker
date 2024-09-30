@@ -152,8 +152,8 @@
                         <div class="slider-container">
                             @if (string.IsNullOrEmpty(weightGaugeClass))
                             {
-                                <SfSlider ID="weightrange" @ref="@weightSliderRef" TValue="int" @bind-Value="@weightGaugeValue" Type="SliderType.MinRange" Width="50%" Min="0" Max="@weightGaugeMaximum" CssClass="weight-slider-container">
-                                    <SliderLimits Enabled="true" MinStart="@(currentUnit == "KG" ? 10 : 20)"></SliderLimits>
+                                <SfSlider ID="weightrange" @ref="@weightSliderRef" @bind-Value="@weightGaugeValue" Type="SliderType.MinRange" Width="50%" Min="0" Max="@weightGaugeMaximum" CssClass="weight-slider-container">
+                                    @* <SliderLimits Enabled="true" MinStart="@(currentUnit == "KG" ? 10 : 20)"></SliderLimits> *@
                                 </SfSlider>
                             }
                         </div>
@@ -210,7 +210,7 @@
                                     if (currentUnit == "CM")
                                     {
                                         <SfSlider ID="heightrange" TValue="double" Value="@heightGaugeValue" Type="SliderType.MinRange" Width="100px" Min="0" Max="230" CssClass="height-slider-container" Orientation="SliderOrientation.Vertical" Step="1">
-                                            <SliderLimits Enabled="true" MinStart="30"></SliderLimits>
+                                            @* <SliderLimits Enabled="true" MinStart="30"></SliderLimits> *@
                                             <SliderEvents TValue="double" OnChange="SliderHeightChange"></SliderEvents>
                                             <SliderTicks Format="N0"></SliderTicks>
                                         </SfSlider>
@@ -218,7 +218,7 @@
                                     else
                                     {
                                         <SfSlider ID="heightrange" TValue="double" Value="@heightGaugeValue" Type="SliderType.MinRange" Width="100px" Min="0" Max="7.5" CssClass="height-slider-container" Orientation="SliderOrientation.Vertical" Step="0.1">
-                                            <SliderLimits Enabled="true" MinStart="1"></SliderLimits>
+                                            @* <SliderLimits Enabled="true" MinStart="1"></SliderLimits> *@
                                             <SliderEvents TValue="double" OnChange="SliderHeightChange"></SliderEvents>
                                             <SliderTicks Format="#.00"></SliderTicks>
                                         </SfSlider>

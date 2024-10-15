@@ -42,14 +42,14 @@
                                                 <CircularGaugeRange Start="2" End="98" Radius="91%" StartWidth="5" EndWidth="5" Color="#FFFFFF" RoundedCornerRadius="2" Opacity="0.35"></CircularGaugeRange>
                                             </CircularGaugeRanges>
                                             <CircularGaugeAnnotations>
-                                                <CircularGaugeAnnotation Angle="290" ZIndex="1" Radius="60%">
+                                                <CircularGaugeAnnotation Angle="135" Radius="5%" ZIndex="1">
                                                     <ContentTemplate>
                                                         <div class="e-fast-ellapsed">@("Elapsed Time (" + gaugePercent + "%)")</div>
                                                         <div class="e-fast-completed">@sliderValue</div>
                                                         <div class="e-fast-left">@timeLeft</div>
                                                     </ContentTemplate>
                                                 </CircularGaugeAnnotation>
-                                                <CircularGaugeAnnotation Angle="@(ciruclarGaugeAnotationAngle)" ZIndex="1" Radius="108%">
+                                                <CircularGaugeAnnotation Angle="@(ciruclarGaugeAnotationAngle)" ZIndex="1" Radius="90%">
                                                     <ContentTemplate>
                                                         @if (ciruclarGaugeAnnotationSecondContent)
                                                         {
@@ -62,7 +62,7 @@
                                                         <div class="e-gauge-status-img icon-Diet"></div>
                                                     </ContentTemplate>
                                                 </CircularGaugeAnnotation>
-                                                <CircularGaugeAnnotation Angle="275" ZIndex="1" Radius="97%">
+                                                <CircularGaugeAnnotation Angle="275" ZIndex="1" Radius="90%">
                                                     <ContentTemplate>
                                                         <div class="e-gauge-status-img icon-Thunder"></div>
                                                     </ContentTemplate>
@@ -157,7 +157,7 @@
                                             <LinearGaugePointers>
                                                 @{
                                                     double waterAmount = Math.Round((SampleService.FastingData.ConsumedWaterAmount / (double)SampleService.FastingData.ExpectedWaterAmount) * 100);
-                                                    <LinearGaugePointer PointerValue="@waterAmount" Type="Point.Bar" Height="50" Width="50" Color="#61a9f7" RoundedCornerRadius="35"></LinearGaugePointer>
+                                                    <LinearGaugePointer PointerValue="@waterAmount" Type="Syncfusion.Blazor.LinearGauge.Point.Bar" Height="50" Width="50" Color="#61a9f7" RoundedCornerRadius="35"></LinearGaugePointer>
                                                     <LinearGaugePointer PointerValue="8" Height="5" Width="5" Offset="-60" Color="#87CEFA" MarkerType="MarkerType.Circle" Opacity="@(waterAmount > 8 ? 1 : 0)"></LinearGaugePointer>
                                                     <LinearGaugePointer PointerValue="15" Height="4" Width="4" Offset="-80" Color="#87CEFA" MarkerType="MarkerType.Circle" Opacity="@(waterAmount > 15 ? 1 : 0)"></LinearGaugePointer>
                                                     <LinearGaugePointer PointerValue="21" Height="7" Width="7" Offset="-75" Color="#87CEFA" MarkerType="MarkerType.Circle" Opacity="@(waterAmount > 21 ? 1 : 0)"></LinearGaugePointer>

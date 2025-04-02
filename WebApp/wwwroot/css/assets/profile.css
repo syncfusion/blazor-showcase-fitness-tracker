@@ -1,0 +1,111 @@
+.e-custom-card {
+  position: relative;
+  margin-top: 40px;
+  overflow: visible;
+  background: #FAFAFC;
+  border: 1px solid #F1F1F8;
+  box-shadow: 0px 4px 12px rgba(103, 173, 255, 0.08);
+  border-radius: 20px;
+  transition: 0.2s;
+}
+
+.e-custom-card :nth-child(2) .e-card-header-title.name {
+  margin-top: 20px;
+}
+
+.e-custom-card .e-card-header {
+  text-align: center;
+}
+
+.e-custom-card .e-avatar {
+  font-size: 40px;
+  position: absolute;
+  height: 80px;
+  width: 80px;
+  top: calc(0% - 1em);
+  cursor: pointer;
+}
+
+.e-profile-editor .e-profile-inner-editor div {
+  border: 2px solid #B5C2CA;
+  margin-right: 3px;
+  float: right;
+}
+
+.e-profile-editor .e-profile-inner-editor {
+  width: 40px;
+  height: 40px;
+  border: none;
+  float: right;
+}
+
+.e-profile-editor .e-profile-inner-editor:hover {
+  cursor: pointer;
+}
+
+.e-profile-editor {
+  margin-top: 16px;
+  width: 30px;
+  float: right;
+  width: 100%;
+}
+
+.profile-row {
+  font-weight: 500 !important;
+  font-size: 10px !important;
+  line-height: 125% !important;
+  text-align: center !important;
+  color: #F15223 !important;
+  margin: 1% !important;
+}
+
+.profile-value {
+  font-weight: 500 !important;
+  font-size: 14px !important;
+  line-height: 125% !important;
+  text-align: center !important;
+  color: #303343 !important;
+  margin: 4px 10% 20px 10% !important;
+}
+
+.e-profile-card {
+  background: #FAFAFC !important;
+  border: 1px solid #F1F1F8 !important;
+  box-sizing: border-box !important;
+  box-shadow: 0px 4px 12px rgba(103, 173, 255, 0.08) !important;
+  border-radius: 20px !important;
+}
+
+.e-custom-card .e-card-content {
+  padding: 0 0 12px 0;
+}
+
+.e-journal-date {
+  margin-top: 20px;
+  width: 50%;
+}
+
+.e-journal {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 125%;
+  color: #303343;
+  margin-top: 25px;
+}
+
+.profile-diet-card-container {
+  display: block;
+  overflow-y: auto;
+  overflow-x: hidden;
+  width: 100%;
+  padding-top: 20px;
+}
+
+@media only screen and (max-width: 1200px) {
+  .e-custom-card {
+    height: 100%;
+    margin-bottom: 0 !important;
+  }
+}

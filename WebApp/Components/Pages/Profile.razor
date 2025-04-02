@@ -1,0 +1,106 @@
+﻿@using Syncfusion.Blazor.Calendars
+@using Syncfusion.Blazor.Buttons
+@using FitnessTracker.Data
+@inject FitnessService SampleService
+
+<div>
+    <div class="e-card e-custom-card">
+        <div class="e-card-header">
+            <div class="e-avatar e-avatar-circle" @onclick="OnProfileEdit" @onclick:stopPropagation="true">
+                <img src="css/assets/Profile/02.png" alt="JW" />
+            </div>
+            <SfButton CssClass="e-profile-edit-btn" IconCss="icon-edit-2" OnClick="OnProfileEdit"></SfButton>
+        </div>
+        <div class="e-card-header">
+            <div class="e-card-header-caption center">
+                <div class="e-card-header-title">@SampleService.ProfileStats.Name</div>
+                <div class="e-card-header-sub-title">@(SampleService.ProfileStats.Age.ToString() + " Years, " + SampleService.ProfileStats.Location)</div>
+            </div>
+        </div>
+        <div class="e-card-content">
+            <table class="e-profile-details">
+                <tr>
+                    <td>
+                        <div class="profile-row">Weight</div>
+                    </td>
+                    <td>
+                        <div class="profile-row">Height</div>
+                    </td>
+                    <td>
+                        <div class="profile-row">Goal</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="profile-value">@(SampleService.ProfileStats.Weight + " " + @SampleService.ProfileStats.WeightMes)</div>
+                    </td>
+                    <td>
+                        <div class="profile-value">@(SampleService.ProfileStats.Height + " " + SampleService.ProfileStats.HeightMes)</div>
+                    </td>
+                    <td>
+                        <div class="profile-value">@(SampleService.ProfileStats.Goal + " " + SampleService.ProfileStats.GoalMes)</div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div>
+        <div class="e-journal" style="float: left;">Journals</div>
+        <div class="e-journal-date" style="float: right;">
+            <SfDatePicker TValue="DateTime?" ShowClearButton="true" Max="DateTime.Now" @bind-Value="@currentDate" Width="100%">
+                <DatePickerEvents TValue="DateTime?" ValueChange="OnDateChange"></DatePickerEvents>
+            </SfDatePicker>
+        </div>
+    </div>
+    <div class="profile-diet-card-container">
+        @foreach (Activity activity in SampleService.TodayActivities)
+        {
+            <div tabindex="0" class="e-card e-diet-card">
+                <div class="e-card-header" style="width: 100%">
+                    <div class="e-card-header-caption">
+                        <div class="e-card-header-title">@activity.ActivityType</div>
+                        <div>
+                            <div class="e-card-header-sub-title" style="float: left;">
+                                @(!string.IsNullOrEmpty(activity.Amount) ? (activity.Amount + " |") : string.Empty)
+                                @(!string.IsNullOrEmpty(activity.Duration) ?  (activity.Duration + " |") : string.Empty)
+                                @(!string.IsNullOrEmpty(activity.Distance) ?  (activity.Distance + " |") : string.Empty)
+                                <span class="@(!string.IsNullOrEmpty(activity.Distance) ? "e-activity-highlight" : "e-meals-highlight")">@(!string.IsNullOrEmpty(activity.Percentage) ? activity.Percentage : string.Empty)</span>
+                            </div>
+                            <div class="e-card-header-sub-title" style="float: right;">@activity.Time</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+@code{
+    private DateTime? currentDate { get; set; }
+    private void OnProfileEdit()
+    {
+        SampleService.ProfileDialogRef?.ShowDialog();
+    }
+
+    private void OnDateChange(ChangedEventArgs<DateTime?> args)
+    {
+        if (args.Value != null)
+        {
+            SampleService.UpdateTodayData();
+            SampleService.DateChanged(args.Value.Value);
+        }
+    }
+
+    internal void StateChanged()
+    {
+        currentDate = SampleService.CurrentDate;
+        StateHasChanged();
+    }
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        SampleService.ProfileTabRef = this;
+        currentDate = SampleService.CurrentDate;
+    }
+}

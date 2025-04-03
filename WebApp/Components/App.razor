@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <base href="/" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link href="css/app.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link id="theme" href="_content/Syncfusion.Blazor.Themes/tailwind.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
+    <link href="css/assets/profile.css" rel="stylesheet" />
+    <script type="text/javascript">
+        window.blazorFitnessTracker =
+            {
+                dotnetRef: null,
+                getClientDetails: function (dotnetObj) {
+                    if (dotnetObj) {
+                        this.dotnetRef = dotnetObj;
+                    }
+                    var clientDetails = {
+                        isDevice: /android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini|mobile/i.test(navigator.userAgent),
+                        innerWidth: window.innerWidth
+                    };
+                    window.addEventListener('resize', blazorFitnessTracker.resize);
+                    return JSON.stringify(clientDetails);
+                },
+                renderTabChild: function () {
+                    var iconDiv = document.createElement('div');
+                    iconDiv.className = 'e-tab-header-icon-div';
+                    var iconSpan = document.createElement('span');
+                    iconSpan.className = 'e-tab-header-icon icon-Logo';
+                    iconDiv.appendChild(iconSpan);
+                    var titleDiv = document.createElement('div');
+                    titleDiv.className = 'e-tab-title';
+                    titleDiv.innerHTML = 'GO<span>FIT</span>';
+                    var containerDiv = document.createElement('div');
+                    containerDiv.className = 'e-tab-header-icon-container';
+                    containerDiv.appendChild(iconDiv);
+                    containerDiv.appendChild(titleDiv);
+                    document.querySelector('.e-tab .e-tab-header').prepend(containerDiv);
+                },
+                resize: function () {
+                    blazorFitnessTracker.dotnetRef.invokeMethodAsync('OnResize', window.innerWidth);
+                },
+                changeTheme: function (theme) {
+                    document.getElementsByTagName('body')[0].style.display = 'none';
+                    var themeName
+                    if (theme === "Light") {
+                        themeName = "tailwind";
+                        if (document.body.classList.contains('e-dark')) {
+                            document.body.classList.remove('e-dark');
+                        }
+                    } else {
+                        themeName = "tailwind-dark";
+                        if (!document.body.classList.contains('e-dark')) {
+                            document.body.classList.add('e-dark');
+                        }
+                    }
+                    let synclink = document.getElementById('theme');
+                    synclink.href = '_content/Syncfusion.Blazor.Themes/' + themeName + '.css';
+                    setTimeout(function () { document.getElementsByTagName('body')[0].style.display = 'block'; }, 200);
+                }
+            }
+    </script>
+    <HeadOutlet @rendermode="InteractiveServer"/>
+</head>
+
+<body>
+<Routes @rendermode="InteractiveServer"/>
+<script src="_framework/blazor.web.js"></script>
+<script src="_content/Syncfusion.Blazor.Core/scripts/syncfusion-blazor.min.js" type="text/javascript"></script>
+</body>
+
+</html>

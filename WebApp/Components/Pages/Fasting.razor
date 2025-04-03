@@ -1,0 +1,527 @@
+@using System.Timers
+@using Syncfusion.Blazor
+@using Syncfusion.Blazor.Buttons
+@using Syncfusion.Blazor.Charts
+@using Syncfusion.Blazor.CircularGauge
+@using Syncfusion.Blazor.LinearGauge
+@using FitnessTracker.Data
+@inject FitnessService SampleService
+@implements IDisposable
+
+<div class="e-dashboardlayout-container e-fasting-dashboardlayout-container">
+    <div class="col-md-9 e-fasting-gauge-container  e-dashboard-content">
+        <div class="e-fasting-header">Fasting</div>
+        <div class="col-md-12 col-sm-12">
+            <div class="col-md-5 e-fasting-panel-container">
+                <div id="fasting-panel-id" class="e-panel e-fasting-panel" data-row="0" data-col="0" data-sizeX="2" data-sizeY="2">
+                    <div class="e-panel-container">
+                        <div class="e-panel-header">
+                            <div class="e-fasting-panel-header-text">Fasting</div>
+                        </div>
+                        <div class="e-panel-content">
+                            <div class="e-fasting-gauge">
+                                <SfCircularGauge ID="fastingGaugeId" Width="100%" Height="300px" CenterX="50%" CenterY="50%" Theme="@theme">
+                                    <CircularGaugeAxes>
+                                        <CircularGaugeAxis Minimum="0" Radius="100%" Maximum="100" StartAngle="5" EndAngle="355">
+                                            <CircularGaugeAxisMajorTicks Height="0"></CircularGaugeAxisMajorTicks>
+                                            <CircularGaugeAxisMinorTicks Height="0"></CircularGaugeAxisMinorTicks>
+                                            <CircularGaugeAxisLabelStyle Position="Syncfusion.Blazor.CircularGauge.Position.Inside" UseRangeColor="true">
+                                                <CircularGaugeAxisLabelFont Size="0px" Color="white" FontFamily="Roboto" FontStyle="Regular"></CircularGaugeAxisLabelFont>
+                                            </CircularGaugeAxisLabelStyle>
+                                            <CircularGaugeAxisLineStyle Width="0"></CircularGaugeAxisLineStyle>
+                                            <CircularGaugeRanges>
+                                                <CircularGaugeRange Start="0" End="100" Radius="100%" StartWidth="30" EndWidth="30" Color="#E1E9ED" RoundedCornerRadius="15"></CircularGaugeRange>
+                                                <CircularGaugeRange Start="0" End="@circularGaugeRangeEnd" Radius="100%" StartWidth="30" EndWidth="30" Color="#CDD9E0" RoundedCornerRadius="15">
+                                                    <Syncfusion.Blazor.CircularGauge.LinearGradient StartValue="0%" EndValue="100%">
+                                                        <Syncfusion.Blazor.CircularGauge.ColorStops>
+                                                            <Syncfusion.Blazor.CircularGauge.ColorStop Color="#FB5F64" Offset="0%" Opacity="0.9"></Syncfusion.Blazor.CircularGauge.ColorStop>
+                                                            <Syncfusion.Blazor.CircularGauge.ColorStop Color="#FC9662" Offset="70%" Opacity="0.9"></Syncfusion.Blazor.CircularGauge.ColorStop>
+                                                        </Syncfusion.Blazor.CircularGauge.ColorStops>
+                                                    </Syncfusion.Blazor.CircularGauge.LinearGradient>
+                                                </CircularGaugeRange>
+                                                <CircularGaugeRange Start="2" End="98" Radius="91%" StartWidth="5" EndWidth="5" Color="#FFFFFF" RoundedCornerRadius="2" Opacity="0.35"></CircularGaugeRange>
+                                            </CircularGaugeRanges>
+                                            <CircularGaugeAnnotations>
+                                                <CircularGaugeAnnotation Angle="135" Radius="5%" ZIndex="1">
+                                                    <ContentTemplate>
+                                                        <div class="e-fast-ellapsed">@("Elapsed Time (" + gaugePercent + "%)")</div>
+                                                        <div class="e-fast-completed">@sliderValue</div>
+                                                        <div class="e-fast-left">@timeLeft</div>
+                                                    </ContentTemplate>
+                                                </CircularGaugeAnnotation>
+                                                <CircularGaugeAnnotation Angle="@(ciruclarGaugeAnotationAngle)" ZIndex="1" Radius="90%">
+                                                    <ContentTemplate>
+                                                        @if (ciruclarGaugeAnnotationSecondContent)
+                                                        {
+                                                            <div class="e-gauge-percent-img icon-Calories"></div>
+                                                        }
+                                                    </ContentTemplate>
+                                                </CircularGaugeAnnotation>
+                                                <CircularGaugeAnnotation Angle="60" ZIndex="1" Radius="86%">
+                                                    <ContentTemplate>
+                                                        <div class="e-gauge-status-img icon-Diet"></div>
+                                                    </ContentTemplate>
+                                                </CircularGaugeAnnotation>
+                                                <CircularGaugeAnnotation Angle="275" ZIndex="1" Radius="90%">
+                                                    <ContentTemplate>
+                                                        <div class="e-gauge-status-img icon-Thunder"></div>
+                                                    </ContentTemplate>
+                                                </CircularGaugeAnnotation>
+                                            </CircularGaugeAnnotations>
+                                        </CircularGaugeAxis>
+                                    </CircularGaugeAxes>
+                                </SfCircularGauge>
+                            </div>
+                            <div class="e-fasting-label-container">
+                                <div>Started Fasting</div>
+                                <div>End Fasting</div>
+                            </div>
+                            <div class="e-fasting-value-container">
+                                <div>@fastStartTime</div>
+                                <div>@fastEndTime</div>
+                            </div>
+                            <div class="e-fasting-button-container">
+                                <SfButton OnClick="ModifyFasting" CssClass="@("e-fast-time-btn " + fastingBtnCss + (isDisabled ? " e-disabled" : string.Empty))" Content="@changeTimeBtnText" Disabled="isDisabled"  width="100%"></SfButton>
+                                <SfButton OnClick="ClearFasting" CssClass="@("e-fast-end-btn " + fastingBtnCss  + (isDisabled ? " e-disabled" : string.Empty))" Content="END FASTING" width="100%" Disabled="isDisabled"></SfButton>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-7 e-water-panel-container">
+                <div id="water-panel-id" class="e-panel e-water-panel" data-row="0" data-col="2" data-sizeX="2" data-sizeY="2">
+                    <div class="e-panel-container">
+                        <div class="e-panel-header">
+                            <div class="e-water-panel-header-text">Water</div>
+                        </div>
+                        <div class="e-panel-content">
+                            <div class="e-water-gauge">
+                                <SfLinearGauge ID="waterGaugeId" Width="100%" Height="@gaugeHeight" Orientation="@gaugeOrientation" Theme="@theme">
+                                    <LinearGaugeContainer Width="50" RoundedCornerRadius="35" Type="ContainerType.RoundedRectangle" BackgroundColor="#3993F5"></LinearGaugeContainer>
+                                    <LinearGaugeAnnotations>
+                                        @if (SampleService.IsDevice)
+                                        {
+                                            <LinearGaugeAnnotation AxisIndex="0" AxisValue="5" X="60" ZIndex="1">
+                                                <ContentTemplate>
+                                                    <div class="@("e-water-annotation-text " + waterHighLightClass[0])">Poor</div>
+                                                </ContentTemplate>
+                                            </LinearGaugeAnnotation>
+                                            <LinearGaugeAnnotation AxisIndex="0" AxisValue="40" X="60" ZIndex="1">
+                                                <ContentTemplate>
+                                                    <div class="@("e-water-annotation-text " + waterHighLightClass[1])">Good</div>
+                                                </ContentTemplate>
+                                            </LinearGaugeAnnotation>
+                                            <LinearGaugeAnnotation AxisIndex="0" AxisValue="70" X="60" ZIndex="1">
+                                                <ContentTemplate>
+                                                    <div class="@("e-water-annotation-text " + waterHighLightClass[2])">Almost</div>
+                                                </ContentTemplate>
+                                            </LinearGaugeAnnotation>
+                                            <LinearGaugeAnnotation AxisIndex="0" AxisValue="95" X="60" ZIndex="1">
+                                                <ContentTemplate>
+                                                    <div class="@("e-water-annotation-text " + waterHighLightClass[3])">Perfect!</div>
+                                                </ContentTemplate>
+                                            </LinearGaugeAnnotation>
+                                        }
+                                        else
+                                        {
+                                            <LinearGaugeAnnotation AxisIndex="0" AxisValue="5" Y="50" ZIndex="1">
+                                                <ContentTemplate>
+                                                    <div class="@("e-water-annotation-text " + waterHighLightClass[0])">Poor</div>
+                                                </ContentTemplate>
+                                            </LinearGaugeAnnotation>
+                                            <LinearGaugeAnnotation AxisIndex="0" AxisValue="40" Y="50" ZIndex="1">
+                                                <ContentTemplate>
+                                                    <div class="@("e-water-annotation-text " + waterHighLightClass[1])">Good</div>
+                                                </ContentTemplate>
+                                            </LinearGaugeAnnotation>
+                                            <LinearGaugeAnnotation AxisIndex="0" AxisValue="70" Y="50" ZIndex="1">
+                                                <ContentTemplate>
+                                                    <div class="@("e-water-annotation-text " + waterHighLightClass[2])">Almost</div>
+                                                </ContentTemplate>
+                                            </LinearGaugeAnnotation>
+                                            <LinearGaugeAnnotation AxisIndex="0" AxisValue="95" Y="50" ZIndex="1">
+                                                <ContentTemplate>
+                                                    <div class="@("e-water-annotation-text " + waterHighLightClass[3])">Perfect!</div>
+                                                </ContentTemplate>
+                                            </LinearGaugeAnnotation>
+                                        }
+                                    </LinearGaugeAnnotations>
+                                    <LinearGaugeAxes>
+                                        <LinearGaugeAxis Minimum="0" Maximum="100" OpposedPosition="true">
+                                            <LinearGaugeLine Width="0"></LinearGaugeLine>
+                                            <LinearGaugeMajorTicks Interval="10" Color="#3993F5" Offset="5"></LinearGaugeMajorTicks>
+                                            <LinearGaugeMinorTicks Interval="2" Color="#3993F5" Offset="5"></LinearGaugeMinorTicks>
+                                            <LinearGaugeAxisLabelStyle>
+                                                <LinearGaugeAxisLabelFont Opacity="0"></LinearGaugeAxisLabelFont>
+                                            </LinearGaugeAxisLabelStyle>
+                                            <LinearGaugePointers>
+                                                @{
+                                                    double waterAmount = Math.Round((SampleService.FastingData.ConsumedWaterAmount / (double)SampleService.FastingData.ExpectedWaterAmount) * 100);
+                                                    <LinearGaugePointer PointerValue="@waterAmount" Type="Syncfusion.Blazor.LinearGauge.Point.Bar" Height="50" Width="50" Color="#61a9f7" RoundedCornerRadius="35"></LinearGaugePointer>
+                                                    <LinearGaugePointer PointerValue="8" Height="5" Width="5" Offset="-60" Color="#87CEFA" MarkerType="MarkerType.Circle" Opacity="@(waterAmount > 8 ? 1 : 0)"></LinearGaugePointer>
+                                                    <LinearGaugePointer PointerValue="15" Height="4" Width="4" Offset="-80" Color="#87CEFA" MarkerType="MarkerType.Circle" Opacity="@(waterAmount > 15 ? 1 : 0)"></LinearGaugePointer>
+                                                    <LinearGaugePointer PointerValue="21" Height="7" Width="7" Offset="-75" Color="#87CEFA" MarkerType="MarkerType.Circle" Opacity="@(waterAmount > 21 ? 1 : 0)"></LinearGaugePointer>
+                                                    <LinearGaugePointer PointerValue="27" Height="8" Width="8" Offset="-65" Color="#87CEFA" MarkerType="MarkerType.Circle" Opacity="@(waterAmount > 27 ? 1 : 0)"></LinearGaugePointer>
+                                                    <LinearGaugePointer PointerValue="37" Height="4" Width="4" Offset="@(SampleService.IsDevice ? "-85" : "-55")" Color="#87CEFA" MarkerType="MarkerType.Circle" Opacity="@(waterAmount > 37 ? 1 : 0)"></LinearGaugePointer>
+                                                    <LinearGaugePointer PointerValue="42" Height="6" Width="6" Offset="-75" Color="#87CEFA" MarkerType="MarkerType.Circle" Opacity="@(waterAmount > 42 ? 1 : 0)"></LinearGaugePointer>
+                                                    <LinearGaugePointer PointerValue="48" Height="8" Width="8" Offset="@(SampleService.IsDevice ? "-80" : "-58")" Color="#87CEFA" MarkerType="MarkerType.Circle" Opacity="@(waterAmount > 48 ? 1 : 0)"></LinearGaugePointer>
+                                                    <LinearGaugePointer PointerValue="56" Height="5" Width="5" Offset="-72" Color="#87CEFA" MarkerType="MarkerType.Circle" Opacity="@(waterAmount > 56 ? 1 : 0)"></LinearGaugePointer>
+                                                    <LinearGaugePointer PointerValue="64" Height="6" Width="6" Offset="-79" Color="#87CEFA" MarkerType="MarkerType.Circle" Opacity="@(waterAmount > 64 ? 1 : 0)"></LinearGaugePointer>
+                                                    <LinearGaugePointer PointerValue="72" Height="8" Width="8" Offset="@(SampleService.IsDevice ? "-85" : "-55")" Color="#87CEFA" MarkerType="MarkerType.Circle" Opacity="@(waterAmount > 72 ? 1 : 0)"></LinearGaugePointer>
+                                                    <LinearGaugePointer PointerValue="80" Height="5" Width="5" Offset="-70" Color="#87CEFA" MarkerType="MarkerType.Circle" Opacity="@(waterAmount > 80 ? 1 : 0)"></LinearGaugePointer>
+                                                    <LinearGaugePointer PointerValue="86" Height="6" Width="6" Offset="-77" Color="#87CEFA" MarkerType="MarkerType.Circle" Opacity="@(waterAmount > 86 ? 1 : 0)"></LinearGaugePointer>
+                                                    <LinearGaugePointer PointerValue="94" Height="8" Width="8" Offset="@(SampleService.IsDevice ? "-80" : "-54")" Color="#87CEFA" MarkerType="MarkerType.Circle" Opacity="@(waterAmount > 94 ? 1 : 0)"></LinearGaugePointer>
+                                                }
+                                            </LinearGaugePointers>
+                                        </LinearGaugeAxis>
+                                    </LinearGaugeAxes>
+                                </SfLinearGauge>
+                            </div>
+                            <div class="e-water-label-container">
+                                <div class="@("e-water-minus icon-minus" + (isDisabled ? " e-disabled" : string.Empty))" @onclick="MinusClick" @onclick:stopPropagation="true"></div>
+                                <div class="e-water-image icon-Water"></div>
+                                <div class="e-water-count">@("X " + SampleService.FastingData.ConsumedWaterCount)</div>
+                                <div class="@("e-water-plus icon-plus" + (isDisabled ? " e-disabled" : string.Empty))" @onclick="PlusClick" @onclick:stopPropagation="true"></div>
+                            </div>
+                            <div class="e-water-value-container">
+                                <div class="e-water-consumed-text">CONSUMED WATER</div>
+                                <div class="e-water-consumed-value">
+                                    @SampleService.FastingData.ConsumedWaterAmount <span class="e-water-consumed-expect">@("ml / " + SampleService.FastingData.ExpectedWaterAmount + " ml")</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div id="fasting-chart-panel-id" class="e-panel e-fasting-chart-panel" data-row="2" data-col="0" data-sizeX="4" data-sizeY="1">
+                <div class="e-panel-container">
+                    <div class="e-panel-header">
+                        <div class="e-weight-chart-header-text">Weight Journey</div>
+                    </div>
+                    <div class="e-panel-content">
+                        <SfChart ID="weightchart" CustomClass="e-weight-chart" Width="100%" Height="70%" Theme="@theme">
+                            <ChartArea>
+                                <ChartAreaBorder Width="0"></ChartAreaBorder>
+                            </ChartArea>
+                            <ChartPrimaryXAxis ValueType="Syncfusion.Blazor.Charts.ValueType.DateTime" LabelFormat="MMM" EdgeLabelPlacement="EdgeLabelPlacement.Shift">
+                                <ChartAxisLabelStyle Size="16px" Color="#56648A" FontFamily="Inter" FontWeight="500"></ChartAxisLabelStyle>
+                                <ChartAxisMajorGridLines Width="0"></ChartAxisMajorGridLines>
+                            </ChartPrimaryXAxis>
+                            <ChartPrimaryYAxis LabelFormat="{value} KG" Maximum="120" Minimum="0" Interval="20">
+                                <ChartAxisLabelStyle Size="16px" Color="#56648A" FontFamily="Inter" FontWeight="500"></ChartAxisLabelStyle>
+                                <ChartAxisMajorGridLines DashArray="10,5"></ChartAxisMajorGridLines>
+                            </ChartPrimaryYAxis>
+                            <ChartTooltipSettings Enable="true"></ChartTooltipSettings>
+                            <ChartSeriesCollection>
+                                <ChartSeries DataSource="@SampleService.FastingData.WeightChartData" Type="ChartSeriesType.SplineArea" Fill="url(#gradient-chart)" XName="X" YName="Y"></ChartSeries>
+                                <ChartSeries DataSource="@SampleService.FastingData.WeightChartData" Type="ChartSeriesType.Spline" Fill="#8983F1" XName="X" YName="Y" Width="3">
+                                    <ChartMarker Visible="true" Height="10" Width="10"></ChartMarker>
+                                </ChartSeries>
+                            </ChartSeriesCollection>
+                        </SfChart>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @if (!SampleService.IsSmallDevice)
+    {
+        <div class="col-md-3 e-dashboard-profile">
+            <div class="col-md-12 col-sm-12">
+                <div id="fasting-profile-panel-id" class="e-panel e-fasting-profile-panel" data-row="0" data-col="4" data-sizeX="1" data-sizeY="3">
+                    <div class="e-panel-container">
+                        <Profile></Profile>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<FastingDialog @ref="@FastingDialogRef" StateChange="StateChange" />
+
+@code{
+    private FastingDialog? FastingDialogRef;
+    private string? fastStartTime { get; set; }
+    private string? fastEndTime { get; set; }
+    private string changeTimeBtnText { get; set; } = "CHANGE TIME";
+    private Syncfusion.Blazor.LinearGauge.Orientation gaugeOrientation { get; set; } 
+    private string? gaugeHeight { get; set; }
+    private string? sliderValue { get; set; } = "Completed";
+    private double circularGaugeRangeEnd { get; set; } = 100;
+    private double ciruclarGaugeAnotationAngle { get; set; } = 342;
+    private bool ciruclarGaugeAnnotationSecondContent { get; set; } = true;
+    private string fastingBtnCss { get; set; } = string.Empty;
+    private Timer? fastingTimer { get; set; }
+    private double gaugePercent { get; set; } = 100;
+    private string timeLeft { get; set; } = "Left 00h 00m";
+    private List<string> waterHighLightClass { get; set; } = new List<string>();
+    private bool isDisabled { get; set; }
+    private Theme theme { get; set; } = Theme.Tailwind;
+
+    private void ModifyFasting()
+    {
+        if (FastingDialogRef != null)
+        {
+            FastingDialogRef.CountStartDate = SampleService.FastingData.CountStartDate;
+            FastingDialogRef.CountDownDate = SampleService.FastingData.CountDownDate;
+            FastingDialogRef.ShowDialog();
+        }
+    }
+
+    private void ClearFasting()
+    {
+        fastingTimer?.Stop();
+        SampleService.FastingData.IsFastingEnded = true;
+        sliderValue = "Completed";
+        gaugePercent = 100;
+        timeLeft = "Left 00h 00m";
+        circularGaugeRangeEnd = 0;
+        ciruclarGaugeAnotationAngle = 0;
+        ciruclarGaugeAnnotationSecondContent = false;
+        changeTimeBtnText = "START FASTING";
+        fastingBtnCss = "e-fast-reset";
+    }
+
+    private void MinusClick()
+    {
+        if (isDisabled)
+        {
+            return;
+        }
+        int hour = DateTime.Now.Hour;
+        string period = hour > 0 && hour < 8 ? "Breakfast Water" : hour > 8 && hour < 16 ? "Lunch Water" : "Evening Water";
+        int index = SampleService.TodayActivities.FindIndex(x => x.Name == period);
+        if (index > -1)
+        {
+            SampleService.FastingData.ConsumedWaterCount = SampleService.FastingData.ConsumedWaterCount > 0 ? SampleService.FastingData.ConsumedWaterCount - 1 : 0;
+            SampleService.FastingData.ConsumedWaterAmount = SampleService.FastingData.ConsumedWaterCount * 150;
+            int percent = (int)Math.Round((SampleService.FastingData.ConsumedWaterAmount / (double)SampleService.FastingData.ExpectedWaterAmount) * 100);
+            int closestIndex = this.closestIndex(percent);
+            waterHighLightClass[closestIndex] = "e-highlight-text";
+            if (closestIndex + 1 < waterHighLightClass.Count)
+            {
+                waterHighLightClass[closestIndex + 1] = string.Empty;
+            }
+            if (SampleService.TodayActivities[index].Count > 1)
+            {
+                Activity activity = new Activity { Name = period, ActivityType = "Water Taken", Count = SampleService.TodayActivities[index].Count - 1, Amount = (SampleService.TodayActivities[index].Count - 1) + " Glasses", Percentage = (((SampleService.TodayActivities[index].Count - 1) * 150 / (double)SampleService.FastingData.ExpectedWaterAmount) * 100).ToString("0.00").Replace(".00", string.Empty) + "%", Time = SampleService.TodayActivities[index].Time };
+                SampleService.TodayActivities[index] = activity;
+            }
+            else
+            {
+                SampleService.TodayActivities.RemoveAt(index);
+            }
+            SampleService.ProfileTabRef?.StateChanged();
+        }
+    }
+
+    private void PlusClick()
+    {
+        if (isDisabled)
+        {
+            return;
+        }
+        int hour = DateTime.Now.Hour;
+        string period = hour > 0 && hour < 8 ? "Breakfast Water" : hour > 8 && hour < 16 ? "Lunch Water" : "Evening Water";
+        int index = SampleService.TodayActivities.FindIndex(x => x.Name == period);
+        Activity activity;
+        if (index > -1)
+        {
+            activity = new Activity { Name = period, ActivityType = "Water Taken", Count = SampleService.TodayActivities[index].Count + 1, Amount = (SampleService.TodayActivities[index].Count + 1) + " Glasses", Percentage = (((SampleService.TodayActivities[index].Count + 1) * 150 / (double)SampleService.FastingData.ExpectedWaterAmount) * 100).ToString("0.00").Replace(".00", string.Empty) + "%", Time = DateTime.Now.ToString("h:mm tt") };
+            SampleService.TodayActivities[index] = activity;
+        }
+        else
+        {
+            activity = new Activity { Name = period, ActivityType = "Water Taken", Count = 1, Amount = 1 + " Glasses", Percentage = ((1 * 150 / (double)SampleService.FastingData.ExpectedWaterAmount) * 100).ToString("0.00").Replace(".00", string.Empty) + "%", Time = DateTime.Now.ToString("h:mm tt") };
+            SampleService.TodayActivities.Add(activity);
+        }
+        if (SampleService.FastingData.ConsumedWaterCount < 20)
+        {
+            SampleService.FastingData.ConsumedWaterCount += 1;
+            SampleService.FastingData.ConsumedWaterAmount = SampleService.FastingData.ConsumedWaterCount * 150;
+            UpdateWaterGauge();
+        }
+        SampleService.ProfileTabRef?.StateChanged();
+    }
+
+    private void UpdateWaterGauge()
+    {
+        int percent = (int)Math.Round((SampleService.FastingData.ConsumedWaterAmount / (double)SampleService.FastingData.ExpectedWaterAmount) * 100);
+        int index = this.closestIndex(percent);
+        int waterGaugeContentLength = 4;
+        waterHighLightClass = new List<string>();
+        for (int i = 0; i < waterGaugeContentLength; i++) {
+            if (i == index)
+            {
+                waterHighLightClass.Add("e-highlight-text");
+            }
+            else
+            {
+                waterHighLightClass.Add(string.Empty);
+            }
+        }
+    }
+
+    private int closestIndex(int num)
+    {
+        int[] counts = new int[] { 5, 40, 70, 95 };
+        int curr = counts[0],
+        diff = Math.Abs(num - curr),
+        index = 0;
+        for (int val = 0; val < counts.Length; val++)
+        {
+            int newdiff = Math.Abs(num - counts[val]);
+            if (newdiff < diff)
+            {
+                diff = newdiff;
+                curr = counts[val];
+                index = val;
+            }
+        }
+        return index;
+    }
+
+    private void OnTooltipRender(Syncfusion.Blazor.Charts.TooltipRenderEventArgs args)
+    {
+        args.Text = args.Data.PointX + ": " + ((int)args.Data.PointY < 1 ? (((int)args.Data.PointY * 1000) + " mg") : (args.Data.PointY + " gm"));
+    }
+
+    private void StateChange()
+    {
+        changeTimeBtnText = "CHANGE TIME";
+        fastingBtnCss = string.Empty;
+        SampleService.FastingData.CountStartDate = FastingDialogRef?.CountStartDate ?? SampleService.FastingData.CountStartDate;
+        SampleService.FastingData.CountDownDate = FastingDialogRef?.CountDownDate ?? SampleService.FastingData.CountDownDate;
+        fastingTimer?.Stop();
+        fastingTimer = new Timer { Interval = 1000, AutoReset = true };
+        fastingTimer.Elapsed += OnTimerElapsed;
+        fastingTimer.Start();
+        StateHasChanged();
+    }
+
+    private async void OnTimerElapsed(object? source, ElapsedEventArgs e)
+    {
+        if (fastingTimer != null)
+        {
+            fastingTimer.Interval = 1000;
+        }
+        UpdateCircularGaugePros();
+        await InvokeAsync(StateHasChanged);
+    }
+
+    private void UpdateCircularGaugePros()
+    {
+        DateTime now = DateTime.Now;
+        bool isToday = SampleService.FastingData.CountStartDate.Date == now.Date;
+        fastStartTime = (isToday ? "Today " : "Yesterday ") + SampleService.FastingData.CountStartDate.ToString("hh:mm tt");
+        isToday = SampleService.FastingData.CountDownDate.Date == now.Date;
+        fastEndTime = (isToday ? "Today " : "Tomorrow ") + SampleService.FastingData.CountDownDate.ToString("hh:mm tt");
+        double distance = (now - SampleService.FastingData.CountStartDate).TotalMilliseconds;
+        SampleService.FastingData.IsFastingEnded = false;
+        if (distance > (SampleService.FastingData.CountDownDate - SampleService.FastingData.CountStartDate).TotalMilliseconds || distance < 0)
+        {
+            EndFasting();
+        }
+        else
+        {
+            gaugePercent = (int)Math.Round(((now - SampleService.FastingData.CountStartDate).TotalMilliseconds / (double)(SampleService.FastingData.CountDownDate - SampleService.FastingData.CountStartDate).TotalMilliseconds) * 100);
+            gaugePercent = gaugePercent > 100 ? 100 : gaugePercent;
+            double left = (SampleService.FastingData.CountDownDate - now).TotalMilliseconds;
+            int leftHours = (int)Math.Floor((left % (1000 * 60 * 60 * 24)) / (double)(1000 * 60 * 60));
+            leftHours = leftHours < 0 ? 0 : leftHours;
+            int leftMinutes = (int)Math.Floor((left % (1000 * 60 * 60)) / (double)(1000 * 60));
+            leftMinutes = leftMinutes < 0 ? 0 : leftMinutes;
+            int hours = (int)Math.Floor((distance % (1000 * 60 * 60 * 24)) / (double)(1000 * 60 * 60));
+            int minutes = (int)Math.Floor((distance % (1000 * 60 * 60)) / (double)(1000 * 60));
+            int seconds = (int)Math.Floor((distance % (1000 * 60)) / (double)1000);
+            DateTime leftTime = DateTime.Today.Date.Add(new TimeSpan(hours, minutes, seconds));
+            sliderValue = leftTime.ToString("HH : mm : ss");
+            circularGaugeRangeEnd = gaugePercent < 1 || gaugePercent > 3  ? gaugePercent : 4;
+            ciruclarGaugeAnotationAngle = (int)Math.Round((gaugePercent / (double)100) * 340) + 12;
+            ciruclarGaugeAnotationAngle = ciruclarGaugeAnotationAngle > 342 ? 342 : ciruclarGaugeAnotationAngle;
+            ciruclarGaugeAnnotationSecondContent = gaugePercent > 80;
+            leftTime = leftTime.Date.Add(new TimeSpan(leftHours, leftMinutes, 0));
+            timeLeft = leftTime.ToString("HH : mm").Replace(":", "h") + " m";
+        }
+    }
+
+    private void EndFasting()
+    {
+        fastingTimer?.Stop();
+        sliderValue = "Completed";
+        gaugePercent = 100;
+        timeLeft = "Left 00h 00m";
+        circularGaugeRangeEnd = 100;
+        ciruclarGaugeAnotationAngle = (int)Math.Round((circularGaugeRangeEnd / (double)100) * 340) + 2;
+        ciruclarGaugeAnnotationSecondContent = true;
+    }
+
+    internal void CallStateHasChanged(bool isPropsRefresh = true)
+    {
+        if (isPropsRefresh)
+        {
+            SampleService.FastingData.IsFastingEnded = false;
+            fastingTimer?.Stop();
+            InitializeProps();
+        }
+        FastingDialogRef?.UpdateProps();
+        gaugeOrientation = SampleService.IsDevice ? Syncfusion.Blazor.LinearGauge.Orientation.Vertical : Syncfusion.Blazor.LinearGauge.Orientation.Horizontal;
+        gaugeHeight = SampleService.IsDevice ? "500px" : "250px";
+        theme = SampleService.CurrentTheme == "Light" ? Theme.Tailwind : Theme.TailwindDark;
+        StateHasChanged();
+    }
+
+    private void InitializeProps()
+    {
+        UpdateWaterGauge();
+        if (SampleService.CurrentDate?.Date == DateTime.Today)
+        {
+            if (SampleService.FastingData.IsFastingEnded)
+            {
+                ClearFasting();
+                return;
+            }
+            isDisabled = false;
+            int gaugePercent = (int)Math.Round(((DateTime.Now - SampleService.FastingData.CountStartDate).TotalMilliseconds / (double)(SampleService.FastingData.CountDownDate - SampleService.FastingData.CountStartDate).TotalMilliseconds) * 100);
+            circularGaugeRangeEnd = gaugePercent > 100 ? 100 : gaugePercent;
+            ciruclarGaugeAnotationAngle = (int)Math.Round((gaugePercent / (double)100) * 340) + 2;
+            ciruclarGaugeAnnotationSecondContent = gaugePercent > 80;
+            fastingTimer = new Timer { Interval = 1, AutoReset = true };
+            fastingTimer.Elapsed += OnTimerElapsed;
+            fastingTimer.Start();
+        }
+        else
+        {
+            isDisabled = true;
+            circularGaugeRangeEnd = 100;
+            ciruclarGaugeAnotationAngle = 342;
+            ciruclarGaugeAnnotationSecondContent = true;
+            timeLeft = "Left 00h 00m";
+            sliderValue = "Completed";
+            gaugePercent = 100;
+            fastingBtnCss = string.Empty;
+        }
+    }
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        gaugeOrientation = SampleService.IsDevice ? Syncfusion.Blazor.LinearGauge.Orientation.Vertical : Syncfusion.Blazor.LinearGauge.Orientation.Horizontal;
+        gaugeHeight = SampleService.IsDevice ? "500px" : "250px";
+        theme = SampleService.CurrentTheme == "Light" ? Theme.Tailwind : Theme.TailwindDark;
+        InitializeProps();
+    }
+
+    public void Dispose()
+    {
+        if (fastingTimer != null)
+        {
+            fastingTimer.Elapsed -= OnTimerElapsed;
+            fastingTimer?.Dispose();
+            fastingTimer = null;
+        }
+    }
+}

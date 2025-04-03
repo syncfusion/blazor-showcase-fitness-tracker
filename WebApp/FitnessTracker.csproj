@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+    </PropertyGroup>
+<ItemGroup>
+    <PackageReference Include="Syncfusion.Blazor.Calendars" Version="28.1.41" />
+    <PackageReference Include="Syncfusion.Blazor.Charts" Version="28.1.41" />
+    <PackageReference Include="Syncfusion.Blazor.CircularGauge" Version="28.1.41" />
+    <PackageReference Include="Syncfusion.Blazor.Core" Version="28.1.41" />
+    <PackageReference Include="Syncfusion.Blazor.Grid" Version="28.1.41" />
+    <PackageReference Include="Syncfusion.Blazor.LinearGauge" Version="28.1.41" />
+    <PackageReference Include="Syncfusion.Blazor.Navigations" Version="28.1.41" />
+    <PackageReference Include="Syncfusion.Blazor.Themes" Version="28.1.41" />
+  </ItemGroup>
+<ItemGroup>
+  <_ContentIncludedByDefault Remove="wwwroot\bootstrap\bootstrap.min.css" />
+  <_ContentIncludedByDefault Remove="wwwroot\bootstrap\bootstrap.min.css.map" />
+</ItemGroup>
+</Project>

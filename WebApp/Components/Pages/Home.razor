@@ -1,0 +1,166 @@
+﻿@page "/"
+
+@using Syncfusion.Blazor.Navigations
+@using FitnessTracker.Data
+@inject IJSRuntime JSRuntime;
+@inject FitnessService SampleService;
+
+@if (IsInitialized)
+{
+    @if (SampleService.IsSmallDevice)
+    {
+        <div class="e-tab-header-mobile-icon-container">
+            <div class="e-tab-header-icon-div">
+                <span class="e-tab-header-icon icon-Logo"></span>
+            </div>
+            <div class="e-tab-title">GO<span>FIT</span></div>
+        </div>
+        <div class="separator-div"></div>
+    }
+    <SfTab ID="fitness-tab" Height="auto" CssClass="tab-container" HeaderPlacement="@HeaderPlacement" @bind-SelectedItem="@tabSelectedItem">
+        <TabEvents Created="@Created" Selecting="TabSelecting"></TabEvents>
+        <TabAnimationSettings>
+            <TabAnimationPrevious Effect="AnimationEffect.None"></TabAnimationPrevious>
+            <TabAnimationNext Effect="AnimationEffect.None"></TabAnimationNext>
+        </TabAnimationSettings>
+        <TabItems>
+            <TabItem>
+                <ChildContent>
+                    <TabHeader Text="ACTIVITIES" IconCss="icon-Activities" IconPosition="top"></TabHeader>
+                </ChildContent>
+                <ContentTemplate>
+                    <Activities @ref="activitiesTabRef"></Activities>
+                </ContentTemplate>
+            </TabItem>
+            <TabItem>
+                <ChildContent>
+                    <TabHeader Text="DIET" IconCss="icon-Diet" IconPosition="top"></TabHeader>
+                </ChildContent>
+                <ContentTemplate>
+                    <Diet @ref="@dietTabRef"></Diet>
+                </ContentTemplate>
+            </TabItem>
+            <TabItem>
+                <ChildContent>
+                    <TabHeader Text="FASTING" IconCss="icon-Fasting" IconPosition="top"></TabHeader>
+                </ChildContent>
+                <ContentTemplate>
+                    <Fasting @ref="fastingTabRef"></Fasting>
+                </ContentTemplate>
+            </TabItem>
+            @if (SampleService.IsSmallDevice)
+            {
+                <TabItem>
+                    <ChildContent>
+                        <TabHeader Text="PROFILE" IconCss="icon-Profile" IconPosition="top"></TabHeader>
+                    </ChildContent>
+                    <ContentTemplate>
+                        <div class="e-dashboardlayout-container  e-profile-dashboardlayout-container">
+                            <div class="col-md-12 col-sm-12 e-profile-panel">
+                                <div id="profile-panel-id" class="e-panel e-profile-panel" data-row="0" data-col="0" data-sizeX="1" data-sizeY="1">
+                                    <div class="e-panel-container">
+                                        <Profile></Profile>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </ContentTemplate>
+                </TabItem>
+            }
+        </TabItems>
+    </SfTab>
+
+    <ProfileDialog />
+
+    <svg style="height: 0">
+        <defs>
+            <linearGradient id="gradient-chart" style="opacity: 0.75" class="chart-gradient" x1="0" x2="0" y1="0" y2="1">
+                <stop offset="0"></stop>
+                <stop offset="1"></stop>
+            </linearGradient>
+            <linearGradient id="gradient-activity-chart" style="opacity: 0.75" class="chart-gradient" x1="0" x2="0" y1="0" y2="1">
+                <stop offset="0"></stop>
+                <stop offset="1"></stop>
+            </linearGradient>
+            <linearGradient id="gradient-diet-chart" style="opacity: 0.75" class="chart-gradient" x1="0" x2="0" y1="0" y2="1">
+                <stop offset="0"></stop>
+                <stop offset="1"></stop>
+            </linearGradient>
+        </defs>
+    </svg>
+}
+
+@code{
+    [Parameter]
+    public bool IsInitialized { get; set; }
+    private bool isRendered { get; set; }
+    private Activities? activitiesTabRef { get; set; }
+    private Diet? dietTabRef { get; set; }
+    private Fasting? fastingTabRef { get; set; }
+    private int tabSelectedItem { get; set; } = 0;
+    internal HeaderPosition HeaderPlacement { get; set; }
+
+    private async Task Created()
+    {
+        await JSRuntime.InvokeVoidAsync("blazorFitnessTracker.renderTabChild");
+        await Task.Yield();
+        isRendered = true;
+    }
+
+    private void TabSelecting(SelectingEventArgs args)
+    {
+        if (args.IsSwiped)
+        {
+            args.Cancel = true;
+        }
+    }
+
+    internal void UpdateActiveTab(bool isRefreshProps = true)
+    {
+        if (tabSelectedItem == 0)
+        {
+            activitiesTabRef?.CallStateHasChanged();
+        }
+        else if (tabSelectedItem == 1)
+        {
+            dietTabRef?.CallStateHasChanged();
+        }
+        else if (tabSelectedItem == 2)
+        {
+            fastingTabRef?.CallStateHasChanged(isRefreshProps);
+        }
+        SampleService.ProfileTabRef?.StateChanged();
+    }
+
+    internal void CallStateHasChanged()
+    {
+        StateHasChanged();
+    }
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        SampleService.TabRef = this;
+        SampleService.MasterData = new List<FitnessService>();
+        DateTime currentDate = DateTime.Now;
+        if (currentDate.Hour >= 18)
+        {
+            SampleService.FastingData.CountStartDate = currentDate.Date.Add(new TimeSpan(18, 0, 0));
+            SampleService.FastingData.CountDownDate = currentDate.Date.Add(new TimeSpan(SampleService.FastingData.CountStartDate.Hour + 16, 0, 0));
+        }
+        else
+        {
+            SampleService.FastingData.CountStartDate = currentDate.Date.AddDays(-1).Add(new TimeSpan(18, 0, 0));
+            SampleService.FastingData.CountDownDate = new DateTime(currentDate.Year, currentDate.Month, SampleService.FastingData.CountStartDate.Day).Add(new TimeSpan(SampleService.FastingData.CountStartDate.Hour + 16, 0, 0));
+        }
+        SampleService.ProfileStats = FitnessService.GetProfileStats();
+        SampleService.DietData.CurrentBreakFastTime = currentDate.Date.Add(new TimeSpan(8, 30, 0));
+        SampleService.DietData.CurrentSnack1Time = currentDate.Date.Add(new TimeSpan(11, 0, 0));
+        SampleService.DietData.CurrentLunchTime = currentDate.Date.Add(new TimeSpan(13, 0, 0));
+        SampleService.DietData.CurrentSnack2Time = currentDate.Date.Add(new TimeSpan(16, 30, 0));
+        SampleService.DietData.CurrentDinnerTime = currentDate.Date.Add(new TimeSpan(20, 0, 0));
+        SampleService.InitializeData();
+        SampleService.UpdateConsumedCalories();
+        SampleService.GetInitialData();
+    }
+}

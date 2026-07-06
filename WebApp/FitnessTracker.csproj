@@ -12,14 +12,14 @@
 </PropertyGroup>
 
 <ItemGroup>
-    <PackageReference Include="Syncfusion.Blazor.Calendars" Version="33.1.44" />
-    <PackageReference Include="Syncfusion.Blazor.Charts" Version="33.1.44" />
-    <PackageReference Include="Syncfusion.Blazor.CircularGauge" Version="33.1.44" />
-    <PackageReference Include="Syncfusion.Blazor.Core" Version="33.1.44" />
-    <PackageReference Include="Syncfusion.Blazor.Grid" Version="33.1.44" />
-    <PackageReference Include="Syncfusion.Blazor.LinearGauge" Version="33.1.44" />
-    <PackageReference Include="Syncfusion.Blazor.Navigations" Version="33.1.44" />
-    <PackageReference Include="Syncfusion.Blazor.Themes" Version="33.1.44" />
+    <PackageReference Include="Syncfusion.Blazor.Calendars" Version="34.1.29" />
+    <PackageReference Include="Syncfusion.Blazor.Charts" Version="34.1.29" />
+    <PackageReference Include="Syncfusion.Blazor.CircularGauge" Version="34.1.29" />
+    <PackageReference Include="Syncfusion.Blazor.Core" Version="34.1.29" />
+    <PackageReference Include="Syncfusion.Blazor.Grid" Version="34.1.29" />
+    <PackageReference Include="Syncfusion.Blazor.LinearGauge" Version="34.1.29" />
+    <PackageReference Include="Syncfusion.Blazor.Navigations" Version="34.1.29" />
+    <PackageReference Include="Syncfusion.Blazor.Themes" Version="34.1.29" />
   </ItemGroup>
 
 <ItemGroup>

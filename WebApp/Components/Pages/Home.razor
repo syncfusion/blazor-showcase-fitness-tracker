@@ -300,7 +300,7 @@
         else
         {
             SampleService.FastingData.CountStartDate = currentDate.Date.AddDays(-1).Add(new TimeSpan(18, 0, 0));
-            SampleService.FastingData.CountDownDate = new DateTime(currentDate.Year, currentDate.Month, SampleService.FastingData.CountStartDate.Day).Add(new TimeSpan(SampleService.FastingData.CountStartDate.Hour + 16, 0, 0));
+            SampleService.FastingData.CountDownDate = SampleService.FastingData.CountStartDate.AddHours(16);
         }
         SampleService.ProfileStats = FitnessService.GetProfileStats();
         SampleService.DietData.CurrentBreakFastTime = currentDate.Date.Add(new TimeSpan(8, 30, 0));
